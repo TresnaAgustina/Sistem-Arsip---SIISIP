@@ -44,14 +44,16 @@ Route::controller(AuthController::class)->group(function () {
 // ===== Document Archive Controller =====
 Route::controller(DocumentController::class)->group(function () {
       // View All Archive Data
-      // Route::get('/document_data', 'index');
+      Route::get('/document_data', 'index');
       // View Detail Archive Data
       Route::get('/document_detail', 'detail');
       // Get Data - Edit Data Archive Document
       Route::get('/document_edit', 'edit');
+      // Store Data - Insert Data
+      Route::get('/document_add', 'add');
       // Store Data - Edit Data Archive Document
-      Route::get('/document_update', 'update');
+      Route::post('/document_update', 'update');
       // Delete Data - Edit Data Archive Document
-      Route::get('/document_destroy', 'destroy');
+      Route::post('/document_destroy', 'destroy');
 });
 

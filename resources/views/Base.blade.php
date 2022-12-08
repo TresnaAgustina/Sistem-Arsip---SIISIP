@@ -30,7 +30,7 @@
         }
       </style>
 </head>
-<body>
+<body width="100%" height="100vh">
       <div id="app" class="d-flex">
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show" id="accordionSidebar">
@@ -165,7 +165,7 @@
                 </li>
       
                   <!-- Nav Item - Utilities Collapse Menu -->
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
                           aria-expanded="false" aria-controls="collapseUtilities">
                           <i class="fas fa-fw fa-wrench"></i>
@@ -181,7 +181,7 @@
                               <a class="collapse-item" href="utilities-other.html">Other</a>
                           </div>
                       </div>
-                  </li>
+                  </li> --}}
       
                   <!-- Divider -->
                   <hr class="sidebar-divider">
@@ -290,9 +290,12 @@
               </nav>
               <!-- End of Topbar -->
 
-                  @if (Auth::check())
+                 <div class="content w-100%">
+                    @if (Auth::check())
                         @yield('Content')
-                  @endif
+                    @endif
+                 </div>
+
             </main>
       </div>
 
