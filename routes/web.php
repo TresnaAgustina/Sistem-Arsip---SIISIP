@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,42 @@ use App\Http\Controllers\ViewController;
 |
 */
 
-// Route::get('/', function () {
-
-// });
 
 
-Route::get('/',[ViewController::class, 'index']);
+// ===== ViewController =====
+Route::controller(ViewController::class)->group(function (){
+      // dashboard
+      Route::get('/', 'index')->name('Home');
+      // register
+      Route::get('/reg', 'register')->name('sign-up');
+      Route::get('/login', 'login')->name('login');
+});
 
-Route::get('/login', [ViewController::class, 'login']);
+
+// ==== AuthController =====
+Route::controller(AuthController::class)->group(function () {
+      // login
+      Route::post('/login', 'authenticate');
+      // Logout
+      Route::post('/logout', 'destroy');
+      // Register
+      Route::post('/reg', 'register');
+});
+
+
+// Route::get('/document_data', DocumentController::class, 'index');
+
+// ===== Document Archive Controller =====
+Route::controller(DocumentController::class)->group(function () {
+      // View All Archive Data
+      // Route::get('/document_data', 'index');
+      // View Detail Archive Data
+      Route::get('/document_detail', 'detail');
+      // Get Data - Edit Data Archive Document
+      Route::get('/document_edit', 'edit');
+      // Store Data - Edit Data Archive Document
+      Route::get('/document_update', 'update');
+      // Delete Data - Edit Data Archive Document
+      Route::get('/document_destroy', 'destroy');
+});
+

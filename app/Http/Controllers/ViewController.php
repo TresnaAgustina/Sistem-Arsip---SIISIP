@@ -17,7 +17,13 @@ class ViewController extends Controller
         }
     }
 
+    // login page
     public function login(){
         return view('auth.Login');
+    }
+
+    // view register
+    public function register(){
+        return view('auth.Register');
     }
 }

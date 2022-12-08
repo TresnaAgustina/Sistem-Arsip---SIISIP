@@ -21,7 +21,7 @@
                 object-fit: fill;
             }
         </style>
-      <title>Login</title>
+      <title>Register</title>
 </head>
 <body>
       <section class="global-container d-flex flex-column">
@@ -51,9 +51,9 @@
                                           <div class="p-5">
                                             {{-- form title --}}
                                               <div class="text-center">
-                                                  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                                  <h1 class="h4 text-gray-900 mb-4">Register User</h1>
                                               </div>
-                                              <form class="user form" action="{{ url('/login') }}" method="POST">
+                                              <form class="user form" acton="{{ url('/reg') }}" method="POST">
                                                 @csrf
                                                 {{-- username --}}
                                                   <div class="form-group">
@@ -67,7 +67,7 @@
                                                   <div class="form-group">
                                                       <input name="password" type="password" class="form-control form-control-user rounded-0 @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password">
                                                         @error('password')
-                                                                <div class="fs-5 text-danger">*{{ $message }}</div>
+                                                                <div class="fs-5 text-danger">{{ $message }}</div>
                                                         @enderror
                                                   </div>
                                                   {{-- button --}}
