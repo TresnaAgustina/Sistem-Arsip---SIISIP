@@ -47,10 +47,12 @@ Route::controller(DocumentController::class)->group(function () {
       Route::get('/document_data', 'index');
       // View Detail Archive Data
       Route::get('/document_detail', 'detail');
+      // View Insert Data
+      Route::get('/document_add', 'add');
       // Get Data - Edit Data Archive Document
       Route::get('/document_edit', 'edit');
       // Store Data - Insert Data
-      Route::get('/document_add', 'add');
+      Route::post('/document_add', 'store');
       // Store Data - Edit Data Archive Document
       Route::post('/document_update', 'update');
       // Delete Data - Edit Data Archive Document

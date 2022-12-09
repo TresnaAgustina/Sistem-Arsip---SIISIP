@@ -18,6 +18,17 @@
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <title>{{ config('app.name', 'Sistem Arsip') }}</title>
       <style>
+        .global-wrapper{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+        .sidebar{
+            width: 13.5rem !important;
+        }
+        .main-content-wrapper{
+            width: 100%;
+        }
         @media (min-width: 768px){
             .nav{
                 padding: 0 4rem;
@@ -31,7 +42,7 @@
       </style>
 </head>
 <body width="100%" height="100vh">
-      <div id="app" class="d-flex">
+      <div id="app" class="global-wrapper">
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show" id="accordionSidebar">
     
@@ -74,7 +85,7 @@
                           <div class="bg-white py-2 collapse-inner rounded">
                               <h6 class="collapse-header">Arsip Dokumen</h6>
                               <a class="collapse-item" href="{{ url('/document_data') }}">Semua Data</a>
-                              <a class="collapse-item" href="cards.html">Input Data</a>
+                              <a class="collapse-item" href="{{ url('/document_add') }}">Input Data</a>
                           </div>
                       </div>
                   </li>
@@ -232,7 +243,7 @@
               <!-- End of Sidebar -->
 
                
-            <main>
+            <main class="main-content-wrapper">
                   <!-- Topbar -->
                <nav class="navbar nav navbar-expand navbar-light bg-white topbar mb-4 sticky-top top-0 shadow">
     

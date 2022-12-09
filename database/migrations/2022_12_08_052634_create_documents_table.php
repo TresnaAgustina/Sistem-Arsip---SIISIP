@@ -15,6 +15,11 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->string('no_surat');
+            $table->date('tanggal');
+            $table->string('kategori');
+            $table->string('link_file');
+            $table->text('uraian');
             $table->timestamps();
         });
     }
