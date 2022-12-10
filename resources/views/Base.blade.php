@@ -44,7 +44,7 @@
 <body width="100%" height="100vh">
       <div id="app" class="global-wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show h-100" id="accordionSidebar">
     
                   <!-- Sidebar - Brand -->
                   <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white p-1"  href="{{ url('/') }}">

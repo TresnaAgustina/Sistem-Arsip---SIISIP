@@ -24,37 +24,33 @@
                                             <th>No.Surat</th>
                                             <th>Tanggal</th>
                                             <th>Kategori</th>
+                                            <th>Judul</th>
                                             <th>Uraian</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="p-2">Tiger Nixon</td>
-                                            <td class="p-2">System Architect</td>
-                                            <td class="p-2">Edinburgh</td>
-                                            <td class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eius iusto quaerat laborum odio consequuntur porro, voluptatem explicabo molestiae cumque similique officia reiciendis voluptatum corporis dicta vel non, fuga repellat.</td>
-                                            <td class="p-2">
-                                                <a href="{{ url('/document_detail') }}" class="btn btn-info btn_detail"><i class='bx bxs-info-circle'></i></a>
-                                                <a href="{{ url('/document_edit') }}" class="btn btn-success btn_edit"><i class='bx bxs-edit' ></i></a>
-                                                {{-- <hr class="sidebar-divider"> --}}
-                                                <a href="{{ url('/document_delete') }}" class="btn btn-danger btn_edit"><i class='bx bxs-trash'></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-2">Garrett Winters</td>
-                                            <td class="p-2">Accountant</td>
-                                            <td class="p-2">Tokyo</td>
-                                            <td class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eius iusto quaerat laborum odio consequuntur porro, voluptatem explicabo molestiae cumque similique officia reiciendis voluptatum corporis dicta vel non, fuga repellat.</td>
-                                            <td class="p-2">
-                                                <a href="{{ url('/document_detail') }}" class="btn btn-info btn_detail"><i class='bx bxs-info-circle'></i></a>
-                                                <a href="{{ url('/document_edit') }}" class="btn btn-success btn_edit"><i class='bx bxs-edit' ></i></a>
-                                                {{-- <hr class="sidebar-divider"> --}}
-                                                <a href="{{ url('/document_delete') }}" class="btn btn-danger btn_edit"><i class='bx bxs-trash'></i></a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($documents as $item)
+                                            <tr>
+                                                <td class="py-3 px-2" style="width:20px">{{ $item-> no_surat }}</td>
+                                                <td class="py-3 px-2" style="width:5%">{{ $item-> tanggal }}</td>
+                                                <td class="py-3 px-2" style="width:5%">{{ $item-> kategori }}</td>
+                                                <td class="py-3 px-2" style="width:10%">{{ $item-> judul }}</td>
+                                                <td class="py-3 px-2" style="width:80%">{{ $item-> uraian }}</td>
+                                                <td class="py-3 px-2" style="width:10%">
+                                                    <a href="{{ $item-> link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
+                                                    <a href="{{ url('/document_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                    {{-- <hr class="sidebar-divider"> --}}
+                                                    <a href="{{ url('/document_delete') }}" class="btn btn-danger btn_delete m-1"><i class='bx bxs-trash'></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                <div class="pagination-wrapper">
+                                    {{-- pagination link --}}
+                                    {{-- {{ $documents->onEachSide(5)->links() }} --}}
+                                </div>
                             </div>
                         </div>
                     </div>

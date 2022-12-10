@@ -13,6 +13,7 @@ class Document extends Model
         'no_surat',
         'tanggal',
         'kategori',
+        'judul',
         'link_file',
         'uraian',
     ];

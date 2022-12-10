@@ -17,6 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->string('no_surat');
             $table->date('tanggal');
+            $table->string('judul');
             $table->string('kategori');
             $table->string('link_file');
             $table->text('uraian');
