@@ -15,6 +15,7 @@
             <!-- Page Heading -->
             <div class="heading-group d-flex align-items-center justify-content-between gap-3 my-3 w-100%">
                   <h1 class="h3 m-0 text-gray-800">Tambah Data Dokumen</h1>
+                  <a href="{{ url('/document_data') }}" class="btn btn-info"><i class='bx bxs-folder' ></i> Lihat Semua Data</a>
               </div>
 
             <form action="{{ url('/document_add') }}" method="POST">

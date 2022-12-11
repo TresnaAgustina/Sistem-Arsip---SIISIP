@@ -89,4 +89,17 @@ class DocumentController extends Controller
             return back()->with('error', 'Update Data Failed, Please Try Again!!');
         }
     }
+
+    // function for delete data
+    // ===== Delete Data ===== //
+    public function delete(Int $id){
+
+        $delete = DB::table('DokTable')->where('id', $id)->delete();
+
+        if($delete){
+            return redirect('/document_data');
+        }else{
+            return back()->with('error', 'Failed to delete post');
+        }
+    }
 }

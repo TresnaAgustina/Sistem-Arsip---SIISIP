@@ -5,10 +5,19 @@
         <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    {{-- error message --}}
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Warning!</strong> {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    {{-- /error message --}}    
+
                     <!-- Page Heading -->
                     <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
                         <h1 class="h3 m-0 text-gray-800">Tabel Data Arsip Dokumen</h1>
-                        <a href="{{ url('/document_add') }}" class="btn btn-info">Tambah <i class='bx bxs-file-plus '></i></a>
+                        <a href="{{ url('/document_add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
                     </div>
   
                     <!-- DataTales Example -->
