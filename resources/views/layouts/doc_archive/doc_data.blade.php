@@ -39,6 +39,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if ($documents->isEmpty())
+                                            <tr>
+                                                <td colspan="6" class="text-center fs-4">Data Is Empty</td>
+                                            </tr>
+                                        @endif
                                         @foreach ($documents as $item)
                                             <tr>
                                                 <td class="py-3 px-2" style="width:20px">{{ $item-> no_surat }}</td>
@@ -50,7 +55,7 @@
                                                     <a href="{{ $item-> link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                     <a href="{{ url('/document_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                     {{-- <hr class="sidebar-divider"> --}}
-                                                    <a href="{{ url('/document_delete') }}" class="btn btn-danger btn_delete m-1"><i class='bx bxs-trash'></i></a>
+                                                    <a href="{{ url('/document_destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Are you sure you want to delete this?')"><i class='bx bxs-trash'></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

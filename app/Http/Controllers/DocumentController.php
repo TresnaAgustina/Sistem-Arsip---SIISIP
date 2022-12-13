@@ -14,7 +14,7 @@ class DocumentController extends Controller
         // get data from database
         $documents = DB::table('documents')
         ->orderBy('tanggal', 'desc')
-        ->paginate(15);
+        ->paginate(5);
         return view('layouts.doc_archive.doc_data', compact('documents'));
     }
 
@@ -92,9 +92,9 @@ class DocumentController extends Controller
 
     // function for delete data
     // ===== Delete Data ===== //
-    public function delete(Int $id){
+    public function destroy(Int $id){
 
-        $delete = DB::table('DokTable')->where('id', $id)->delete();
+        $delete = Document::where('id', $id)->delete();
 
         if($delete){
             return redirect('/document_data');

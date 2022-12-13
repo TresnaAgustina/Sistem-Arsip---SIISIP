@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BsiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\DocumentController;
@@ -39,9 +40,9 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 
-// Route::get('/document_data', DocumentController::class, 'index');
-
-// ===== Document Archive Controller =====
+// ======================================= \\
+// ===== Document Archive Controller ===== \\
+// ======================================= \\
 Route::controller(DocumentController::class)->group(function () {
       // View All Archive Data
       Route::get('/document_data', 'index');
@@ -57,6 +58,28 @@ Route::controller(DocumentController::class)->group(function () {
       // Store Data - Edit Data Archive Document
       Route::post('/document_update/{id}', 'update');
       // Delete Data - Edit Data Archive Document
-      Route::post('/document_destroy/{id}', 'destroy');
+      Route::get('/document_destroy/{id}', 'destroy');
+});
+
+
+// ================================================ \\
+// ===== Bali Smart Island Controller ===== \\
+// ================================================ \\
+Route::controller(BsiController::class)->group(function () {
+      // View All Data
+      Route::get('/bsi_data', 'index');
+      // View Detail Data
+      Route::get('/bsi_detail', 'detail');
+      // View Insert Data
+      Route::get('/bsi_add', 'add');
+      // Get Data - Edit Data bsi
+      Route::get('/bsi_edit/{id}', 'edit');
+      
+      // Store Data - Insert Data
+      Route::post('/bsi_add', 'store');
+      // Store Data - Edit Data bsi
+      Route::post('/bsi_update/{id}', 'update');
+      // Delete Data - Edit Data bsi
+      Route::get('/bsi_destroy/{id}', 'destroy');
 });
 
