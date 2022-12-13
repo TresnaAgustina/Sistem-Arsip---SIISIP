@@ -25,20 +25,26 @@
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Nomor Surat</label>
-                        <input type="text" id="option1" class="form-control" name="no_surat" required/>
+                        <input type="text" id="option1" class="form-control  @error('no_surat') is-invalid @enderror" name="no_surat"/>
+                        @error('no_surat')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option2">Tanggal Surat</label>
-                        <input type="date" id="option2" class="form-control"  name="tanggal"required/>
+                        <input type="date" id="option2" class="form-control  @error('tanggal') is-invalid @enderror"  name="tanggal"/>
+                        @error('tanggal')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
 
                     <div class="col">
                         <div class="form-outline">
                           <label class="form-label" for="kategori">Kategori Surat</label>
-                          <div class="btn-group">
+                            <div class="btn-group   @error('kategori') is-invalid @enderror">
                               <input type="radio" class="btn-check" name="kategori" id="radio-option1" value="kontrak" />
                               <label class="btn btn-primary" for="radio-option1">Kontrak</label>
                             
@@ -48,6 +54,9 @@
                               <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="spj" />
                               <label class="btn btn-primary" for="radio-option3">SPJ</label>
                             </div>
+                              @error('kategori')
+                                <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                              @enderror
                         </div>
                       </div>
                   </div>
@@ -55,19 +64,28 @@
                   <!-- input -->
                   <div class="form-outline mb-4">
                       <label class="form-label" for="option4">Judul Surat</label>
-                      <input type="text" id="option4" class="form-control" name="judul" required/>
+                      <input type="text" id="option4" class="form-control  @error('judul') is-invalid @enderror" name="judul"/>
+                      @error('judul')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                      @enderror
                   </div>
                 
                   <!-- input -->
                   <div class="form-outline mb-4">
                         <label class="form-label" for="option5">Link File/Surat</label>
-                        <input type="text" id="option5" class="form-control" name="link_file" required/>
+                        <input type="text" id="option5" class="form-control  @error('link_file') is-invalid @enderror" name="link_file"/>
+                        @error('link_file')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                   </div>
                 
                   <!-- input -->
                   <div class="form-outline mb-4">
                     <label class="form-label" for="option6">Uraian Surat/Informasi Tambahan</label>
-                    <textarea class="form-control" id="option6" rows="4" name="uraian"></textarea>
+                    <textarea class="form-control  @error('uraian') is-invalid @enderror" id="option6" rows="4" name="uraian"></textarea>
+                    @error('uraian')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                    @enderror
                   </div>
                 
                   <!-- Submit button -->

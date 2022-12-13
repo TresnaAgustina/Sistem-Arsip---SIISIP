@@ -20,7 +20,7 @@ class CreateDocumentsTable extends Migration
             $table->string('judul');
             $table->string('kategori');
             $table->string('link_file');
-            $table->text('uraian');
+            $table->text('uraian')->nullable();
             $table->timestamps();
         });
     }

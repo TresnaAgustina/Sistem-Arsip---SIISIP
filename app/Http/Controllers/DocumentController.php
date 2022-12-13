@@ -27,8 +27,6 @@ class DocumentController extends Controller
     // function store data document
     public function store(Request $request){
 
-        // ddd();
-
         // Validation
         $validate = $request->validate([
           'no_surat' => 'required|string',
@@ -36,7 +34,7 @@ class DocumentController extends Controller
           'kategori' => 'required|string',
           'judul' => 'required|string',
           'link_file' => 'required|string',
-          'uraian' => 'required|string',
+          'uraian' => 'nullable|string',
         ]); 
 
         // check if validation is valid?
@@ -64,7 +62,7 @@ class DocumentController extends Controller
     // function update data
     public function update(Request $request, Int $id){
          // Validation
-         $validate = $request->validate([
+         $request->validate([
             'no_surat' => 'required|string',
             'tanggal' => 'required|date',
             'kategori' => 'required|string',

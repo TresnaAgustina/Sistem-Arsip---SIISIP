@@ -17,7 +17,7 @@
                     <!-- Page Heading -->
                     <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
                         <h1 class="h3 m-0 text-gray-800">Tabel Data Arsip Dokumen</h1>
-                        <a href="{{ url('/document_add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
+                        <a href="{{ url('/bsi_add') }}" class="btn btn-info p-3"><i class='bx bx-plus-circle fs-5 align-top'></i> Tambah Data</a>
                     </div>
   
                     <!-- DataTales Example -->

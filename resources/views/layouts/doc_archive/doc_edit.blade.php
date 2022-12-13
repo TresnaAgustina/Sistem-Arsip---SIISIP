@@ -23,21 +23,27 @@
                         <div class="row mb-4">
                         <div class="col">
                             <div class="form-outline">
-                            <label class="form-label" for="option1">Nomor Surat</label>
-                            <input type="text" id="option1" class="form-control" name="no_surat" value="{{ $item-> no_surat }}" required/>
+                                <label class="form-label" for="option1">Nomor Surat</label>
+                                <input type="text" id="option1" class="form-control @error('no_surat') is-invalid @enderror" name="no_surat" value="{{ $item-> no_surat }}" required/>
+                                @error('no_surat')
+                                    <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-outline">
-                            <label class="form-label" for="option2">Tanggal Surat</label>
-                            <input type="date" id="option2" class="form-control"  name="tanggal" value="{{ $item-> tanggal }}"required/>
+                                <label class="form-label" for="option2">Tanggal Surat</label>
+                                <input type="date" id="option2" class="form-control @error('tanggal') is-invalid @enderror"  name="tanggal" value="{{ $item-> tanggal }}"required/>
+                                @error('tanggal')
+                                    <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="form-outline">
                                 <label class="form-label" for="kategori">Kategori Surat</label>
-                                <div class="btn-group">
+                                <div class="btn-group @error('kategori') is-invalid @enderror">
                                     <input type="radio" class="btn-check" name="kategori" id="radio-option1" value="kontrak" @if( $item-> kategori == 'kontrak') checked @endif />
                                     <label class="btn btn-primary" for="radio-option1">Kontrak</label>
                                 
@@ -47,6 +53,9 @@
                                     <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="spj" @if( $item-> kategori == 'spj') checked @endif />
                                     <label class="btn btn-primary" for="radio-option3">SPJ</label>
                                 </div>
+                                @error('kategori')
+                                    <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                                @enderror
                             </div>
                             </div>
                         </div>
@@ -54,19 +63,28 @@
                         <!-- input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="option4">Judul Surat</label>
-                            <input type="text" id="option4" class="form-control" name="judul" value="{{ $item-> judul }}" required/>
+                            <input type="text" id="option4" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{ $item-> judul }}" required/>
+                            @error('judul')
+                                <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                             @enderror
                         </div>
                     
                         <!-- input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="option5">Link File/Surat</label>
-                            <input type="text" id="option5" class="form-control" name="link_file" value="{{ $item-> link_file }}"required/>
+                            <input type="text" id="option5" class="form-control @error('link_file') is-invalid @enderror" name="link_file" value="{{ $item-> link_file }}"required/>
+                            @error('link_file')
+                                <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                            @enderror
                         </div>
                     
                         <!-- input -->
                         <div class="form-outline mb-4">
-                        <label class="form-label" for="option6">Uraian Surat/Informasi Tambahan</label>
-                        <textarea class="form-control" id="option6" rows="4" name="uraian">{{ $item-> uraian }}</textarea>
+                            <label class="form-label" for="option6">Uraian Surat/Informasi Tambahan</label>
+                            <textarea class="form-control @error('uraian') is-invalid @enderror" id="option6" rows="4" name="uraian">{{ $item-> uraian }}</textarea>
+                            @error('uraian')
+                                    <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                            @enderror
                         </div>
                     
                         <!-- Submit button -->
