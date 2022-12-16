@@ -5,6 +5,7 @@ use App\Http\Controllers\BsiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\InfrastructureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,4 +91,32 @@ Route::controller(BsiController::class)->group(function () {
       // Delete Data - Edit Data bsi
       Route::get('/bsi_destroy/{id}', 'destroy');
 });
+
+
+
+// ================================================ \\
+// ===== Infrastructures Controller ===== \\
+// ================================================ \\
+Route::controller(InfrastructureController::class)->group(function () {
+      // View All Data
+      Route::get('/infra_data', 'index')
+            ->middleware('auth');
+      // View Detail Data
+      Route::get('/infra_detail', 'detail')
+            ->middleware('auth');
+      // View Insert Data
+      Route::get('/infra_add', 'add')
+            ->middleware('auth');
+      // Get Data - Edit Data infrastructures
+      Route::get('/infra_edit/{id}', 'edit')
+            ->middleware('auth');
+      
+      // Store Data - Insert Data
+      Route::post('/infra_add', 'store');
+      // Store Data - Edit Data infrastructures
+      Route::post('/infra_update/{id}', 'update');
+      // Delete Data - Edit Data infrastructures
+      Route::get('/infra_destroy/{id}', 'destroy');
+});
+
 

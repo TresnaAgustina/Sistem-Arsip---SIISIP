@@ -35,9 +35,10 @@
                 display: none;
         }
         .topbar #sidebarToggleTop {
-            height: 3rem;
             width: 3rem;
+            height: 3rem;
             padding: 0;
+            marin: 0;
         }
         @media (min-width: 768px){
             .nav{
@@ -50,7 +51,7 @@
 <body width="100%" height="100vh">
       <div id="app" class="global-wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show sticky-left"  id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show sticky sticky-left"  id="accordionSidebar">
     
                   <!-- Sidebar - Brand -->
                   <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white p-1"  href="{{ url('/') }}">
@@ -244,7 +245,7 @@
     
                   <!-- Sidebar Toggle (Topbar) -->
                   <button id="sidebarToggleTop" onclick="navToggle()" class="btn btn-link  rounded-circle">
-                      <i class="fa fa-bars fs-4"></i>
+                      <i class="fa fa-bars fs-4 m-0 p-0"></i>
                   </button>
 
                   <!-- Topbar Navbar -->

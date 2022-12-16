@@ -19,6 +19,7 @@ Field Pencatatan Videotron{
       - Lokasi
       - penyedia
       - tahun_pengadaan
+      - catatan
       - Detail
 }
 

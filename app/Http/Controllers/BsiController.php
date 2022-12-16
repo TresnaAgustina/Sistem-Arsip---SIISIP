@@ -48,9 +48,9 @@ class BsiController extends Controller
                 'nomor_tlp' => 'nullable|string',
             ]);
 
-            if(isset($valid)){
+            if($valid){
                 $store = Bsi::create($valid);
-                if(isset($store)){
+                if($store){
                     return redirect('/bsi_data');
                 }else{
                 return back()->with('error', 'Gagal Menyimpan Data, Silahkan Coba Lagi!');
