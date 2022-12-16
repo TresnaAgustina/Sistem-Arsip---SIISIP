@@ -19,15 +19,15 @@ class CreateBsisTable extends Migration
             $table->string('kabupaten');
             $table->string('kecamatan');
             $table->string('desa');
-            $table->string('desa_pekraman');
+            $table->string('desa_pekraman')->nullable();
             $table->string('data_lokasi');
             $table->string('media');
             $table->string('layanan');
-            $table->string('lokasi');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('nama_pic');
-            $table->string('nomor_tlp');
+            $table->string('lokasi')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('nama_pic')->nullable();
+            $table->string('nomor_tlp')->nullable();
             $table->timestamps();
         });
     }

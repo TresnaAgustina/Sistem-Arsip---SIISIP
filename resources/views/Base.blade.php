@@ -6,16 +6,17 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      {{-- bootstrap css and js --}}
+      {{-- bootstrap css --}}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-      {{-- SB Admin css and js --}}
+      {{-- SB Admin css --}}
       <link rel="stylesheet" href="{{ asset('sbadmin/css/sb-admin-2.min.css') }}">
-      <script src="{{ asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
       {{-- font awesome --}}
       <script src="https://kit.fontawesome.com/199bad1da3.js" crossorigin="anonymous"></script>
       {{-- Box icons --}}
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      {{-- datatables css --}}
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
       <title>{{ config('app.name', 'Sistem Arsip') }}</title>
       <style>
         .global-wrapper{
@@ -24,32 +25,37 @@
             display: flex;
         }
         .sidebar{
-            width: 13.5rem !important;
+            z-index: 100 !important;
         }
+
         .main-content-wrapper{
             width: 100%;
+        }
+        .sidebar.show{
+                display: none;
+        }
+        .topbar #sidebarToggleTop {
+            height: 3rem;
+            width: 3rem;
+            padding: 0;
         }
         @media (min-width: 768px){
             .nav{
                 padding: 0 4rem;
             }
         }
-        @media (max-width: 768px){
-            #accordionSidebar.show{
-                display: none;
-            }
-        }
       </style>
+
 </head>
 <body width="100%" height="100vh">
       <div id="app" class="global-wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show h-100" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion show sticky-left"  id="accordionSidebar">
     
                   <!-- Sidebar - Brand -->
                   <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white p-1"  href="{{ url('/') }}">
                       <div class="sidebar-brand-icon">
-                        <img src="{{ asset('assets/img/img/logo.png') }}" width="50" alt="">
+                        <img src="{{ asset('assets/img/img/logo.png') }}" width="50" loading="lazy" alt="">
                           {{-- <i class="fas fa-laugh-wink"></i> --}}
                       </div>
                       <div class="sidebar-brand-text mx-3 text-primary">SIISIP <sup>v1.0</sup></div>
@@ -70,7 +76,7 @@
       
                   <!-- Heading -->
                   <div class="sidebar-heading">
-                      Main Menu
+                      Arsip Dokumen
                   </div>
       
                   <!-- Nav Item - Pages Collapse Menu -->
@@ -89,6 +95,14 @@
                           </div>
                       </div>
                   </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+      
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Pendataan Infrastruktur
+                </div>
 
                   <!-- Nav Item - BSI Collapse Menu -->
                   <li class="nav-item">
@@ -175,25 +189,6 @@
                     </div>
                 </li>
       
-                  <!-- Nav Item - Utilities Collapse Menu -->
-                  {{-- <li class="nav-item">
-                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUtilities"
-                          aria-expanded="false" aria-controls="collapseUtilities">
-                          <i class="fas fa-fw fa-wrench"></i>
-                          <span>Utilities</span>
-                      </a>
-                      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                          data-parent="#accordionSidebar">
-                          <div class="bg-white py-2 collapse-inner rounded">
-                              <h6 class="collapse-header">Custom Utilities:</h6>
-                              <a class="collapse-item" href="utilities-color.html">Colors</a>
-                              <a class="collapse-item" href="utilities-border.html">Borders</a>
-                              <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                              <a class="collapse-item" href="utilities-other.html">Other</a>
-                          </div>
-                      </div>
-                  </li> --}}
-      
                   <!-- Divider -->
                   <hr class="sidebar-divider">
       
@@ -248,22 +243,9 @@
                <nav class="navbar nav navbar-expand navbar-light bg-white topbar mb-4 sticky-top top-0 shadow">
     
                   <!-- Sidebar Toggle (Topbar) -->
-                  <button id="sidebarToggleTop" onclick="navToggle()" class="btn btn-link d-md-none rounded-circle mr-3">
-                      <i class="fa fa-bars"></i>
+                  <button id="sidebarToggleTop" onclick="navToggle()" class="btn btn-link  rounded-circle">
+                      <i class="fa fa-bars fs-4"></i>
                   </button>
-
-                  <!-- Topbar Search -->
-                  <form action="{{ url('/search') }}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <div class="input-group">
-                          <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                              aria-label="Search" aria-describedby="basic-addon2">
-                          <div class="input-group-append">
-                              <button class="btn btn-primary" type="button">
-                                  <i class="fas fa-search fa-sm"></i>
-                              </button>
-                          </div>
-                      </div>
-                  </form>
 
                   <!-- Topbar Navbar -->
                   <ul class="navbar-nav ml-auto">
@@ -312,15 +294,7 @@
 
       
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Diskominfo 2022</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
+      
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -344,11 +318,28 @@
             </div>
         </div>
     </div>  
+    
 
-<script>
-    function navToggle() {
-      document.getElementById("accordionSidebar").classList.toggle("show");
-}
-</script>
+
+    {{-- Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    {{-- script datatables --}}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
+    {{-- bootstrap js --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- sbadmin js --}}
+    <script src="{{ asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
+    {{-- custom js --}}
+    <script>
+        // script defaults datatables
+        $(document).ready( function () {
+            $('#dataTable').DataTable();
+        } );
+
+        // function for sidebar
+        function navToggle() {
+        document.getElementById("accordionSidebar").classList.toggle("show");
+    }
+    </script>
 </body>
 </html>

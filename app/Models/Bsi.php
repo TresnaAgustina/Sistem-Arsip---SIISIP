@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Bsi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'kategori',
+        'kabupaten',
+        'kecamatan',
+        'desa',
+        'desa_pekraman',
+        'data_lokasi',
+        'media',
+        'layanan',
+        'lokasi',
+        'latitude',
+        'longitude',
+        'nama_pic',
+        'nomor_tlp',
+    ];
+
+
+    // protected $hidden = [
+    //     'link_file',
+    // ];
 }

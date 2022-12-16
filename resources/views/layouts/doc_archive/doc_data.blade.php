@@ -46,12 +46,12 @@
                                         @endif
                                         @foreach ($documents as $item)
                                             <tr>
-                                                <td class="py-3 px-2" style="width:20px">{{ $item-> no_surat }}</td>
-                                                <td class="py-3 px-2" style="width:5%">{{ $item-> tanggal }}</td>
-                                                <td class="py-3 px-2" style="width:5%">{{ $item-> kategori }}</td>
-                                                <td class="py-3 px-2" style="width:10%">{{ $item-> judul }}</td>
-                                                <td class="py-3 px-2" style="width:80%">{{ $item-> uraian }}</td>
-                                                <td class="py-3 px-2" style="width:10%">
+                                                <td class="py-3 px-2" style="">{{ $item-> no_surat }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item-> tanggal }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item-> kategori }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item-> judul }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item-> uraian }}</td>
+                                                <td class="py-3 px-2" style="">
                                                     <a href="{{ $item-> link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                     <a href="{{ url('/document_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                     {{-- <hr class="sidebar-divider"> --}}
@@ -63,7 +63,7 @@
                                 </table>
                                 <div class="pagination-wrapper">
                                     {{-- pagination link --}}
-                                    {{-- {{ $documents->onEachSide(5)->links() }} --}}
+                                    {{ $documents->onEachSide(5)->links() }}
                                 </div>
                             </div>
                         </div>
@@ -75,4 +75,14 @@
             </div>
             <!-- End of Main Content -->
     </section>
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Diskominfo 2022</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
 @endsection

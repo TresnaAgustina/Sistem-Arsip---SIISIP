@@ -45,13 +45,17 @@ Route::controller(AuthController::class)->group(function () {
 // ======================================= \\
 Route::controller(DocumentController::class)->group(function () {
       // View All Archive Data
-      Route::get('/document_data', 'index');
+      Route::get('/document_data', 'index')
+            ->middleware('auth');
       // View Detail Archive Data
-      Route::get('/document_detail', 'detail');
+      Route::get('/document_detail', 'detail')
+            ->middleware('auth');
       // View Insert Data
-      Route::get('/document_add', 'add');
+      Route::get('/document_add', 'add')
+            ->middleware('auth');
       // Get Data - Edit Data Archive Document
-      Route::get('/document_edit/{id}', 'edit');
+      Route::get('/document_edit/{id}', 'edit')
+            ->middleware('auth');
       
       // Store Data - Insert Data
       Route::post('/document_add', 'store');
@@ -67,13 +71,17 @@ Route::controller(DocumentController::class)->group(function () {
 // ================================================ \\
 Route::controller(BsiController::class)->group(function () {
       // View All Data
-      Route::get('/bsi_data', 'index');
+      Route::get('/bsi_data', 'index')
+            ->middleware('auth');
       // View Detail Data
-      Route::get('/bsi_detail', 'detail');
+      Route::get('/bsi_detail', 'detail')
+            ->middleware('auth');
       // View Insert Data
-      Route::get('/bsi_add', 'add');
+      Route::get('/bsi_add', 'add')
+            ->middleware('auth');
       // Get Data - Edit Data bsi
-      Route::get('/bsi_edit/{id}', 'edit');
+      Route::get('/bsi_edit/{id}', 'edit')
+            ->middleware('auth');
       
       // Store Data - Insert Data
       Route::post('/bsi_add', 'store');

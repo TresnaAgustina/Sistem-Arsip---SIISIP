@@ -16,7 +16,7 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "browser-sync": "^2.27.10",
+        "browser-sync": "^2.11.2",
         "browser-sync-webpack-plugin": "^2.3.0"
     }
 }

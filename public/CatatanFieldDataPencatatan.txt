@@ -1,0 +1,45 @@
+
+
+Field Pencatatan CCTV{
+      - nama
+      - kordinat
+            Latitude
+            Longitude
+      - Lokasi
+      - penyedia
+      - tahun_pengadaan
+      - Detail
+}
+
+Field Pencatatan Videotron{
+      - nama
+      - kordinat
+            Latitude
+            Longitude
+      - Lokasi
+      - penyedia
+      - tahun_pengadaan
+      - Detail
+}
+
+Field Pencatatan Intranet{
+      - nama
+      - kordinat
+            Latitude
+            Longitude
+      - Lokasi
+      - penyedia
+      - tahun_pengadaan
+      - Detail
+}
+
+Field Pencatatan Server{
+      - nama
+      - kordinat
+            Latitude
+            Longitude
+      - Lokasi
+      - penyedia
+      - tahun_pengadaan
+      - Detail
+}

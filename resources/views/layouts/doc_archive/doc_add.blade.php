@@ -6,7 +6,7 @@
                   {{-- error message --}}
                   @if(session()->has('error'))
                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Warning!</strong> {{ session('error') }}
+                        <strong>Warning!</strong> {{ session()->get('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
                   @endif
@@ -93,4 +93,14 @@
             </form>
             </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Diskominfo 2022</span>
+          </div>
+      </div>
+  </footer>
+  <!-- End of Footer -->
 @endsection

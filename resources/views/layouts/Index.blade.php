@@ -382,4 +382,14 @@
             <i class="fas fa-angle-up"></i>
         </a>
     </div>
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Diskominfo 2022</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
 @endsection
