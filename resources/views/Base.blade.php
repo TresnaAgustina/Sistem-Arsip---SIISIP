@@ -31,7 +31,7 @@
         .main-content-wrapper{
             width: 100%;
         }
-        .sidebar.show{
+        .sidebar.toggled{
                 display: none;
         }
         .topbar #sidebarToggleTop {
