@@ -78,9 +78,9 @@
                                                         <td class="py-3 px-2 align-middle">{{ $item-> nomor_tlp }}</td>
                                                         <td class="py-3 px-2 text-center align-middle">
                                                             {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
-                                                            <a href="{{ url('/bsi_edit/') }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                            <a href="{{ url('/bsi_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                             {{-- <hr class="sidebar-divider"> --}}
-                                                            <a href="{{ url('/bsi_destroy/') }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Are you sure you want to delete this?')"><i class='bx bxs-trash'></i></a>
+                                                            <a href="{{ url('/bsi_destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
                                                         </td>
                                                     </tr>
                                             @endforeach

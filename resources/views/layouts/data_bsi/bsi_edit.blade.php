@@ -84,13 +84,13 @@
                                           <label class="form-label" for="kategori">Kategori Lokasi</label>
                                           <div class="btn-group">
                                                 {{-- option 1 --}}
-                                                <input type="radio" class="btn-check" name="kategori" id="radio-option1" value="Puskesmas" @if( $item-> kategori == 'Puskesmas') checked @endif/>
+                                                <input type="radio" class="btn-check" name="kategori" id="radio-option1" value="Puskesmas" @if( $item-> kategori == "Puskesmas") checked @endif/>
                                                 <label class="btn btn-primary" for="radio-option1">Puskesmas</label>
                                                 {{-- option 2 --}}
-                                                <input type="radio" class="btn-check" name="kategori" id="radio-option2" value="Desa Pekraman" @if( $item-> kategori == 'Desa Pekraman') checked @endif/>
+                                                <input type="radio" class="btn-check" name="kategori" id="radio-option2" value="Desa Pekraman" @if( $item-> kategori == "Desa Pekraman") checked @endif/>
                                                 <label class="btn btn-primary" for="radio-option2">Desa Pekraman</label>
                                                 {{-- option 3 --}}
-                                                <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="Objek Wisata" @if( $item-> kategori == 'Objek Wisata') checked @endif/>
+                                                <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="Objek Wisata" @if( $item-> kategori == "Objek Wisata") checked @endif/>
                                                 <label class="btn btn-primary" for="radio-option3">Objek Wisata</label>
                                           </div>
                                     </div>

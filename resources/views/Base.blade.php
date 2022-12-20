@@ -143,108 +143,11 @@
                         </div>
                     </div>
                 </li>
-
-                <!-- Nav Item - Videotron Collapse Menu -->
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-                        aria-expanded="true" aria-controls="collapseFive">
-                        <i class='bx bxs-tv' ></i>
-                        <span>Pendataan Videotron</span>
-                        <i class='bx bx-chevron-right fs-5' ></i>
-                    </a>
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Pencatatan Videotron</h6>
-                            <a class="collapse-item" href="buttons.html">Semua Data</a>
-                            <a class="collapse-item" href="cards.html">Input Data</a>
-                        </div>
-                    </div>
-                </li> --}}
-
-                <!-- Nav Item - Intranet Collapse Menu -->
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSix"
-                        aria-expanded="true" aria-controls="collapseSix">
-                        <i class='bx bxs-network-chart' ></i>
-                        <span>Pendataan Intranet</span>
-                        <i class='bx bx-chevron-right fs-5' ></i>
-                    </a>
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Pencatatan Intranet</h6>
-                            <a class="collapse-item" href="buttons.html">Semua Data</a>
-                            <a class="collapse-item" href="cards.html">Input Data</a>
-                        </div>
-                    </div>
-                </li> --}}
-
-                <!-- Nav Item - Server Collapse Menu -->
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-                        aria-expanded="true" aria-controls="collapseSeven">
-                        <i class='bx bxs-server'></i>
-                        <span>Pendataan Server</span>
-                        <i class='bx bx-chevron-right fs-5' ></i>
-                    </a>
-                    <div id="collapseSeven" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Pencatatan Server</h6>
-                            <a class="collapse-item" href="buttons.html">Semua Data</a>
-                            <a class="collapse-item" href="cards.html">Input Data</a>
-                        </div>
-                    </div>
-                </li> --}}
-      
-                  <!-- Divider -->
-                  {{-- <hr class="sidebar-divider"> --}}
-      
-                  <!-- Heading -->
-                  {{-- <div class="sidebar-heading">
-                      Addons
-                  </div> --}}
-      
-                  <!-- Nav Item - Pages Collapse Menu -->
-                  {{-- <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <i class="fas fa-fw fa-folder"></i>
-                            <span>Pages</span>
-                        </a>
-                        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">Login Screens:</h6>
-                                <a class="collapse-item" href="login.html">Login</a>
-                                <a class="collapse-item" href="register.html">Register</a>
-                                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                                <div class="collapse-divider"></div>
-                                <h6 class="collapse-header">Other Pages:</h6>
-                                <a class="collapse-item" href="404.html">404 Page</a>
-                                <a class="collapse-item" href="blank.html">Blank Page</a>
-                            </div>
-                        </div>
-                  </li> --}}
-      
-                  <!-- Nav Item - Charts -->
-                  {{-- <li class="nav-item">
-                      <a class="nav-link" href="charts.html">
-                          <i class="fas fa-fw fa-chart-area"></i>
-                          <span>Charts</span></a>
-                  </li> --}}
-      
-                  <!-- Nav Item - Tables -->
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="tables.html">
-                            <i class="fas fa-fw fa-table"></i>
-                            <span>Tables</span></a>
-                    </li> --}}
-      
-                  <!-- Divider -->
-                  {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
-      
               </ul>
               <!-- End of Sidebar -->
 
                
-            <main class="main-content-wrapper">
+            <main class="main-content-wrapper overflow-scroll">
                   <!-- Topbar -->
                <nav class="navbar nav navbar-expand navbar-light bg-white topbar mb-4 sticky-top top-0 shadow">
     

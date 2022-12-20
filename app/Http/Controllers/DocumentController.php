@@ -62,7 +62,7 @@ class DocumentController extends Controller
     // function update data
     public function update(Request $request, Int $id){
          // Validation
-         $request->validate([
+         $validation = $request->validate([
             'no_surat' => 'required|string',
             'tanggal' => 'required|date',
             'kategori' => 'required|string',
@@ -70,6 +70,10 @@ class DocumentController extends Controller
             'link_file' => 'required|string',
             'uraian' => 'required|string',
           ]); 
+
+          if(!$validation){
+            return back()->with('error', 'Update Data Failed, Please Try Again!!');
+          }
 
           $update = Document::where('id', $id)->update([
             'no_surat' => $request->no_surat,

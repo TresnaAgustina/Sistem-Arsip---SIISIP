@@ -80,13 +80,39 @@ class BsiController extends Controller
 
 
         if(!$validation){
-            ddd();
+            return back()->with('error', 'Gagal untuk melakukan update data, silahkan coba lagi!');
         }
 
-        Bsi::where('id', $id)->update();
+        $update = Bsi::where('id', $id)->update([
+            'kategori' => $request-> kategori,
+            'kabupaten' => $request-> kabupaten,
+            'kecamatan' => $request-> kecamatan,
+            'desa' => $request-> desa,
+            'desa_pekraman' => $request-> desa_pekraman,
+            'data_lokasi' => $request-> data_lokasi,
+            'media' => $request-> media,
+            'layanan' => $request-> layanan,
+            'lokasi'=> $request-> lokasi,
+            'latitude' => $request-> latitude,
+            'longitude' => $request-> longitude,
+            'nama_pic' => $request-> nama_pic,
+            'nomor_tlp' => $request-> nomor_tlp,
+        ]);
+
+        if(!$update){
+            return back()->with('error', 'Gagal untuk melakukan update data, silahkan coba lagi!');
+        }
+
+        return redirect('/bsi_data');
     }
     // function for Delete Data
     public function destroy(Int $id){
-        
+        $delete = Bsi::where('id', $id)->delete();
+
+        if($delete){
+            return redirect('/bsi_data');
+        }else{
+            return back()->with('error', 'Failed to delete post');
+        }
     }
 }
