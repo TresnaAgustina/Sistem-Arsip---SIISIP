@@ -34,24 +34,36 @@
                       <div class="form-outline">
                         <label class="form-label" for="option1">Kabupaten</label>
                         <input type="text" id="option1" class="form-control" name="kabupaten" />
+                        @error('kabupaten')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option2">Kecamatan</label>
                         <input type="text" id="option2" class="form-control"  name="kecamatan"/>
+                        @error('kecamatan')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Desa</label>
                         <input type="text" id="option1" class="form-control" name="desa" />
+                        @error('desa')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Desa Pekraman</label>
                         <input type="text" id="option1" class="form-control" name="desa_pekraman" />
+                        @error('desa_pekraman')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -61,6 +73,9 @@
                     <div class="form-outline col">
                       <label class="form-label" for="option4">Data Lokasi</label>
                       <input type="text" id="option4" class="form-control" name="data_lokasi" />
+                      @error('data_lokasi')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                      @enderror
                     </div>
 
                     <div class="col">
@@ -77,6 +92,9 @@
                             <label class="btn btn-primary" for="radio-option3">Objek Wisata</label>
                           </div>
                       </div>
+                      @error('kategori')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                      @enderror
                     </div>
                   </div>
 
@@ -90,6 +108,9 @@
                               <option value="Fiber Optik">
                               <option value="Wireless">
                           </datalist>
+                          @error('media')
+                            <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                          @enderror
                       </div>
                       <!-- input -->
                       <div class="form-outline col">
@@ -99,6 +120,9 @@
                             <option value="Wifi Station">
                             <option value="Orbit">
                           </datalist>
+                          @error('layanan')
+                            <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                          @enderror
                       </div>
                   </div>
 
@@ -107,16 +131,25 @@
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Lokasi Terpasang</label>
                         <input type="text" id="option4" class="form-control" name="lokasi" />
+                        @error('lokasi')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                       <!-- input -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Latitude</label>
                         <input type="text" id="option4" class="form-control" name="latitude" />
+                        @error('latitude')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                        <!-- input -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Longitude</label>
                         <input type="text" id="option4" class="form-control" name="longitude" />
+                        @error('longitude')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                   </div>  
 
@@ -125,11 +158,17 @@
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Nama PIC</label>
                         <input type="text" id="option4" class="form-control" name="nama_pic" />
+                        @error('nama_pic')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                       <!-- input -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Nomor Telepon</label>
                         <input type="text" id="option4" class="form-control" name="nomor_tlp" />
+                        @error('nomor_tlp')
+                          <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
+                        @enderror
                       </div>
                   </div>
                 

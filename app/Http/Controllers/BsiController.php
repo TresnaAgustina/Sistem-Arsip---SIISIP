@@ -53,7 +53,7 @@ class BsiController extends Controller
                 if($store){
                     return redirect('/bsi_data');
                 }else{
-                return back()->with('error', 'Gagal Menyimpan Data, Silahkan Coba Lagi!');
+                    return back()->with('error', 'Gagal Menyimpan Data, Silahkan Coba Lagi!');
                 }
             }else{
                 return back()->with('error', "Terjadi Kesalahan Saat Mencoba Menyimpan Dta, Silahkan Coba Lagi!");
@@ -77,6 +77,13 @@ class BsiController extends Controller
             'nama_pic' => 'nullable|string',
             'nomor_tlp' => 'nullable|string',
         ]);
+
+
+        if(!$validation){
+            ddd();
+        }
+
+        Bsi::where('id', $id)->update();
     }
     // function for Delete Data
     public function destroy(Int $id){

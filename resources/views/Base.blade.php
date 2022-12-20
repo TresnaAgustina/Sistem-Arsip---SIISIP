@@ -25,7 +25,12 @@
             display: flex;
         }
         .sidebar{
+            display: none;
             z-index: 100 !important;
+        }
+
+        .sidebar.show{
+            display: block;
         }
 
         .main-content-wrapper{
@@ -82,7 +87,7 @@
       
                   <!-- Nav Item - Pages Collapse Menu -->
                   <li class="nav-item">
-                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                      <a class="nav-link collapsed d-flex" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                           aria-expanded="true" aria-controls="collapseTwo">
                           <i class='bx bxs-folder-open'></i>
                           <span>Arsip Dokumen</span>
@@ -107,10 +112,10 @@
 
                   <!-- Nav Item - BSI Collapse Menu -->
                   <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                    <a class="nav-link collapsed d-flex" href="#" data-bs-toggle="collapse" data-bs-target="#collapseThree"
                         aria-expanded="true" aria-controls="collapseThree">
                         <i class='bx bx-wifi' ></i>
-                        <span>Pendataan BSI</span>
+                        <span>Data BSI</span>
                         <i class='bx bx-chevron-right fs-5' ></i>
                     </a>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
@@ -124,15 +129,15 @@
 
                 <!-- Nav Item - CCTV Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsefour"
+                    <a class="nav-link collapsed align-center d-flex" href="#" data-bs-toggle="collapse" data-bs-target="#collapsefour"
                         aria-expanded="true" aria-controls="collapsefour">
-                        <i class='bx bxs-cctv' ></i>
-                        <span>Pendataan CCTV</span>
+                        <i class='bx bxs-notepad'></i>
+                        <span>Data Infrastruktur</span>
                         <i class='bx bx-chevron-right fs-5' ></i>
                     </a>
                     <div id="collapsefour" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Pencatatan CCTV</h6>
+                            <h6 class="collapse-header">Pencatatan</h6>
                             <a class="collapse-item" href="buttons.html">Semua Data</a>
                             <a class="collapse-item" href="cards.html">Input Data</a>
                         </div>
@@ -140,7 +145,7 @@
                 </li>
 
                 <!-- Nav Item - Videotron Collapse Menu -->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFive"
                         aria-expanded="true" aria-controls="collapseFive">
                         <i class='bx bxs-tv' ></i>
@@ -154,10 +159,10 @@
                             <a class="collapse-item" href="cards.html">Input Data</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
                 <!-- Nav Item - Intranet Collapse Menu -->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSix"
                         aria-expanded="true" aria-controls="collapseSix">
                         <i class='bx bxs-network-chart' ></i>
@@ -171,10 +176,10 @@
                             <a class="collapse-item" href="cards.html">Input Data</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
                 <!-- Nav Item - Server Collapse Menu -->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
                         aria-expanded="true" aria-controls="collapseSeven">
                         <i class='bx bxs-server'></i>
@@ -188,18 +193,18 @@
                             <a class="collapse-item" href="cards.html">Input Data</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
       
                   <!-- Divider -->
-                  <hr class="sidebar-divider">
+                  {{-- <hr class="sidebar-divider"> --}}
       
                   <!-- Heading -->
-                  <div class="sidebar-heading">
+                  {{-- <div class="sidebar-heading">
                       Addons
-                  </div>
+                  </div> --}}
       
                   <!-- Nav Item - Pages Collapse Menu -->
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <i class="fas fa-fw fa-folder"></i>
                             <span>Pages</span>
@@ -216,21 +221,21 @@
                                 <a class="collapse-item" href="blank.html">Blank Page</a>
                             </div>
                         </div>
-                  </li>
+                  </li> --}}
       
                   <!-- Nav Item - Charts -->
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                       <a class="nav-link" href="charts.html">
                           <i class="fas fa-fw fa-chart-area"></i>
                           <span>Charts</span></a>
-                  </li>
+                  </li> --}}
       
                   <!-- Nav Item - Tables -->
-                  <li class="nav-item">
-                      <a class="nav-link" href="tables.html">
-                          <i class="fas fa-fw fa-table"></i>
-                          <span>Tables</span></a>
-                  </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="tables.html">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Tables</span></a>
+                    </li> --}}
       
                   <!-- Divider -->
                   {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
