@@ -26,6 +26,8 @@ class Bsi extends Model
     ];
 
 
+    protected $dates = ['deleted_at'];
+
     // protected $hidden = [
     //     'link_file',
     // ];

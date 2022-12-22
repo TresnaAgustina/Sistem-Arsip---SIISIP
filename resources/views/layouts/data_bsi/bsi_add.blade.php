@@ -33,7 +33,10 @@
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Kabupaten</label>
-                        <input type="text" id="option1" class="form-control" name="kabupaten" />
+                        <input type="text" id="option1" class="form-control" datalist="list01" name="kabupaten" />
+                        <datalist id="list01">
+                          <option value="Gianyar">
+                        </datalist>
                         @error('kabupaten')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror

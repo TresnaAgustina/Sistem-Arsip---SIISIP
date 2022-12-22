@@ -15,6 +15,15 @@ class CreateInfrastructuresTable extends Migration
     {
         Schema::create('infrastructures', function (Blueprint $table) {
             $table->id();
+            $table->string('kategori');
+            $table->string('nama');
+            $table->string('lokasi');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('penyedia');
+            $table->string('tahun_pengadaan');
+            $table->text('catatan')->nullable();
+            $table->string('detail')->nullable();
             $table->timestamps();
         });
     }

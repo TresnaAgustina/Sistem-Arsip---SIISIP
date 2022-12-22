@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Infrastructure;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class InfrastructureController extends Controller
 {
@@ -15,7 +17,7 @@ class InfrastructureController extends Controller
 
     // function view add
     public function add(){
-        return view('layouts.infrastures.infra_add');
+        return view('layouts.infrastructures.infra_add');
     }
 
     // function view edit
@@ -37,10 +39,11 @@ class InfrastructureController extends Controller
             'nama' => 'required|string',
             'tahun_pengadaan' => 'required|date',
             'lokasi' => 'required|string',
+            'penyedia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'detail' => 'required|string',
-            'catatan' => 'required|text'
+            'detail' => 'nullable|file|mimes: pdf,png,jpg,jpeg|max: 2048',
+            'catatan' => 'nullable|string'
         ]);
 
         if($request->isEmpty()){

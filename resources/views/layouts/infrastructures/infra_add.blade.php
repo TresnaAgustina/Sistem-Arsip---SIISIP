@@ -13,119 +13,92 @@
                   
             <!-- Page Heading -->
             <div class="heading-group d-flex align-items-center justify-content-between gap-3 my-5 w-100%">
-                  <h1 class="h3 m-0 text-gray-800">Pencatatan Data Bali Smart Island</h1>
+                  <h1 class="h3 m-0 text-gray-800">Pendataan Infrastruktur</h1>
                   <a href="{{ url('/infra_data') }}" class="btn btn-info"><i class='bx bxs-folder fs-5 align-top' ></i> Lihat Semua Data</a>
             </div>
 
             <form action="{{ url('/infra_add') }}" method="POST">
                   @csrf
+                  {{-- row --}}
+                  <div class="row mb-4">
+                              {{-- col --}}
+                        <div class="col">
+                              <div class="form-outline d-flex flex-column">
+                                    <label class="form-label" for="kategori">Kategori Infrastruktur</label>
+                                    <div class="btn-group">
+                                          <input type="radio" class="btn-check" name="kategori" id="radio-option1" value="cctv" checked/>
+                                          <label class="btn btn-primary" for="radio-option1">CCTV</label>
+                                          
+                                          <input type="radio" class="btn-check" name="kategori" id="radio-option2" value="videotron" />
+                                          <label class="btn btn-primary" for="radio-option2">Videotron</label>
+                                                
+                                          <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="intranet" />
+                                          <label class="btn btn-primary" for="radio-option3">Intranet</label>
+
+                                          <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="server" />
+                                          <label class="btn btn-primary" for="radio-option3">Server</label>
+                                    </div>
+                              </div>
+                        </div>
+
+                        <!-- input -->
+                        <div class="form-outline col">
+                              <label class="form-label" for="option4">Nama</label>
+                              <input type="text" id="option4" class="form-control" name="nama" />
+                        </div>
+                  </div>
+      
                   <!-- 2 column grid layout with text inputs for the first and last names -->
                   <div class="row mb-4">
                         <div class="col">
                               <div class="form-outline">
-                                    <label class="form-label" for="option1">Kabupaten</label>
-                                    <input type="text" id="option1" class="form-control" name="kabupaten" />
+                                    <label class="form-label" for="option1">Tahun Pengadaan</label>
+                                    <input type="text" id="option1" class="form-control" name="tahun_pengadaan" />
                               </div>
                         </div>
                         {{-- col --}}
                         <div class="col">
                               <div class="form-outline">
-                                    <label class="form-label" for="option2">Kecamatan</label>
-                                    <input type="text" id="option2" class="form-control"  name="kecamatan"/>
+                                    <label class="form-label" for="option2">Penyedia</label>
+                                    <input type="text" id="option2" class="form-control"  name="penyedia"/>
                               </div>
                         </div>
                         {{-- col --}}
                         <div class="col">
                               <div class="form-outline">
-                                    <label class="form-label" for="option1">Desa</label>
-                                    <input type="text" id="option1" class="form-control" name="desa" />
-                              </div>
-                        </div>
-                        {{-- col --}}
-                        <div class="col">
-                              <div class="form-outline">
-                                    <label class="form-label" for="option1">Desa Pekraman</label>
-                                    <input type="text" id="option1" class="form-control" name="desa_pekraman" />
+                                    <label class="form-label" for="option1">Lokasi</label>
+                                    <input type="text" id="option1" class="form-control" name="lokasi" />
                               </div>
                         </div>
                   </div>
-
-                  {{-- row --}}
-                  <div class="row mb-4">
-                  <!-- input -->
-                        <div class="form-outline col">
-                              <label class="form-label" for="option4">Data Lokasi</label>
-                              <input type="text" id="option4" class="form-control" name="data_lokasi" />
-                        </div>
-                        {{-- col --}}
-                        <div class="col">
-                              <div class="form-outline d-flex flex-column">
-                                    <label class="form-label" for="kategori">Kategori Lokasi</label>
-                                    <div class="btn-group">
-                                          <input type="radio" class="btn-check" name="kategori" id="radio-option1" value="Puskesmas" checked/>
-                                          <label class="btn btn-primary" for="radio-option1">Puskesmas</label>
-                                          
-                                          <input type="radio" class="btn-check" name="kategori" id="radio-option2" value="Desa Pekraman" />
-                                          <label class="btn btn-primary" for="radio-option2">Desa Pekraman</label>
-                                          
-                                          <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="Objek Wisata" />
-                                          <label class="btn btn-primary" for="radio-option3">Objek Wisata</label>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-
                   
                   <div class="row mb-4">
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label for="DataList01" class="form-label">Media</label>
-                        <input class="form-control" name="media" list="dataListOption01" id="DataList01">
-                        <datalist id="dataListOption01">
-                              <option value="Fiber Optik">
-                              <option value="Wireless">
-                        </datalist>
-                  </div>
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label for="DataList02" class="form-label">Layanan</label>
-                        <input class="form-control" name="layanan" list="dataListOption02" id="DataList02">
-                        <datalist id="dataListOption02">
-                              <option value="Wifi Station">
-                              <option value="Orbit">
-                        </datalist>
-                  </div>
+                        <!-- input -->
+                        <div class="form-outline col">
+                              <label class="form-label" for="option4">Latitude</label>
+                              <input type="text" id="option4" class="form-control" name="latitude" />
+                        </div>
+                        <!-- input -->
+                        <div class="form-outline col">
+                              <label class="form-label" for="option4">Longitude</label>
+                              <input type="text" id="option4" class="form-control" name="longitude" />
+                        </div>
                   </div>
 
                   <div class="row mb-4">
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label class="form-label" for="option4">Lokasi Terpasang</label>
-                        <input type="text" id="option4" class="form-control" name="lokasi" />
+                        <!-- input -->
+                        <div class="form-outline col">
+                              <label class="form-label" for="option4">Detail</label>
+                              <input type="file" id="option4" class="form-control" name="detail" />
+                        </div>
                   </div>
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label class="form-label" for="option4">Latitude</label>
-                        <input type="text" id="option4" class="form-control" name="latitude" />
-                  </div>
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label class="form-label" for="option4">Longitude</label>
-                        <input type="text" id="option4" class="form-control" name="longitude" />
-                  </div>
-                  </div>  
 
                   <div class="row mb-4">
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label class="form-label" for="option4">Nama PIC</label>
-                        <input type="text" id="option4" class="form-control" name="nama_pic" />
-                  </div>
-                  <!-- input -->
-                  <div class="form-outline col">
-                        <label class="form-label" for="option4">Nomor Telepon</label>
-                        <input type="text" id="option4" class="form-control" name="nomor_tlp" />
-                  </div>
+                        <!-- input -->
+                        <div class="form-outline col">
+                              <label class="form-label" for="option6">Catatan</label>
+                              <textarea class="form-control  @error('catatan') is-invalid @enderror" id="option6" rows="4" name="catatan"></textarea>
+                        </div>
                   </div>
             
                   <!-- Submit button -->

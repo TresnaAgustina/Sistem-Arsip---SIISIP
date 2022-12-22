@@ -138,8 +138,8 @@
                     <div id="collapsefour" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Pencatatan</h6>
-                            <a class="collapse-item" href="buttons.html">Semua Data</a>
-                            <a class="collapse-item" href="cards.html">Input Data</a>
+                            <a class="collapse-item" href="{{ url('/infra_data') }}">Semua Data</a>
+                            <a class="collapse-item" href="{{ url('/infra_add') }}">Input Data</a>
                         </div>
                     </div>
                 </li>
