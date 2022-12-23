@@ -38,29 +38,29 @@ class InfrastructureController extends Controller
 
         $validate = $request->validate([
             'nama' => 'required|string',
-            'tahun_pengadaan' => 'required|date',
+            'kategori' => 'required|string',
+            'tahun_pengadaan' => 'required|string',
             'lokasi' => 'required|string',
             'penyedia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'detail' => 'nullable|mimes: pdf,png,jpg,jpeg|max: 2048',
+            'detail' => 'file|max: 2048',
             'catatan' => 'nullable|string'
         ]);
 
-        ddd();
-
         if($request->hasFile('detail')){
-            $validate['detail'] = $request->file('detail')->store('file');
+            // $request->file('detail')->store('files');  
+            $validate['detail'] = $request->file('detail')->store('files');
         }else{
             $path = '';
         }
 
-        if($request->isEmpty()){
-            return back()->with('error', 'Silahkan Masukan Data Dengan Lengkap');
-        }
+        // $fileName = time().'.'.$request->file->extension();  
+   
+        // $request->file->move(public_path('uploads'), $fileName);
 
-        // ddd();
 
         Infrastructure::create($validate);
+        return redirect('/infra_data');
     }
 }

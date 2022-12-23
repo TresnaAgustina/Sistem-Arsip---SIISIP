@@ -65,7 +65,10 @@
                                                       <td class="py-3 px-2 align-middle">{{ $item-> lokasi }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> latitude }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> longitude }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> detail }}</td>
+                                                      <td class="py-3 px-2 align-middle">
+                                                        {{-- <img src="{{ asset('storage/'.$item-> detail) }}" alt="Img"> --}}
+                                                        <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="auto" height="auto"></iframe>
+                                                      </td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> catatan }}</td>
                                                       <td class="py-3 px-2 text-center align-middle">
                                                           {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}

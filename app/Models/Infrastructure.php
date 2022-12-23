@@ -11,6 +11,7 @@ class Infrastructure extends Model
 
     protected $fillable = [
         'nama',
+        'kategori',
         'tahun_pengadaan',
         'lokasi',
         'penyedia',

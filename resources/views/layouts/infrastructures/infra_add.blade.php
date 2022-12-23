@@ -6,7 +6,7 @@
 
             @if($errors->any())
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>Warning!</strong> {{ session()->get('message') }}
+                  <strong>Warning!</strong> {{ $errors }}
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
@@ -17,7 +17,7 @@
                   <a href="{{ url('/infra_data') }}" class="btn btn-info"><i class='bx bxs-folder fs-5 align-top' ></i> Lihat Semua Data</a>
             </div>
 
-            <form action="{{ url('/infra_add') }}" method="POST">
+            <form action="{{ url('/infra_add') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   {{-- row --}}
                   <div class="row mb-4">
@@ -35,8 +35,8 @@
                                           <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="intranet" />
                                           <label class="btn btn-primary" for="radio-option3">Intranet</label>
 
-                                          <input type="radio" class="btn-check" name="kategori" id="radio-option3" value="server" />
-                                          <label class="btn btn-primary" for="radio-option3">Server</label>
+                                          <input type="radio" class="btn-check" name="kategori" id="radio-option4" value="server" />
+                                          <label class="btn btn-primary" for="radio-option4">Server</label>
                                     </div>
                               </div>
                         </div>
