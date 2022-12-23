@@ -13,7 +13,7 @@ class BsiController extends Controller
     // Function View Data Bali Smart Islands
     public function index(){
         // get data from database
-        $bsi = DB::table('bsis')->orderBy('id', 'desc')->paginate(15);
+        $bsi = DB::table('bsis')->orderBy('id', 'desc')->get();
         // returning view
         return view('layouts.data_bsi.bsi_data', compact('bsi'));
     }

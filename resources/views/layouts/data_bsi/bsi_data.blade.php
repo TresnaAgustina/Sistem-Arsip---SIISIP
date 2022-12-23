@@ -90,11 +90,11 @@
                         </div>
                     </div>
                         {{-- pagination link --}}
-                        <nav aria-label="Page navigation">
+                        {{-- <nav aria-label="Page navigation">
                             <ul class="pagination  pagination-sm">
                                 {{ $bsi->onEachSide(5)->links() }}
                             </ul>
-                        </nav>
+                        </nav> --}}
                 </div>
                 <!-- /.container-fluid -->
   

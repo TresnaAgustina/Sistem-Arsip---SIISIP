@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Bsi;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +11,8 @@ class ViewController extends Controller
     // root page
     public function index(){
         if(Auth::check()){
+            // $getBsi = Bsi::get();
+            // $countBsi = count($getBsi);
             return view('layouts.Index');
         }else{
             return view('auth.Login');

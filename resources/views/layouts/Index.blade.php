@@ -32,7 +32,9 @@
                                             <div class="col mr-2">
                                                 <div class="fs-5 font-weight-bold text-primary text-uppercase mb-1">
                                                     Arsip Dokumen</div>
-                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>120</b></div>
+                                                    {{-- @foreach ($countBsi as $item) --}}
+                                                        <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>120</b></div>
+                                                    {{-- @endforeach --}}
                                             </div>
                                             <div class="col-auto">
                                                 <i class='bx bxs-folder-open text-gray-400 fa-3x'></i>
