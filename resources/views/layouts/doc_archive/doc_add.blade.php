@@ -4,11 +4,11 @@
     <section class="container-fluid">
             <div class="container">
                   {{-- error message --}}
-                  @if(session()->has('error'))
-                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Warning!</strong> {{ session()->get('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
+                  @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Warning!</strong> {{ $errors }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                   @endif
                   {{-- /error message --}}
                   

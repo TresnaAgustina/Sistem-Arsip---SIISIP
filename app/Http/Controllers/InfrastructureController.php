@@ -28,13 +28,14 @@ class InfrastructureController extends Controller
             return back()->withError('error', 'Data Tidak Ditemukan, Coba Lagi!');
         }
 
-        return view('layouts.infrastructures.infra_edit');
+        return view('layouts.infrastructures.infra_edit', compact('find'));
     }
 
     // ===== Logic ===== //
 
     // function add data
     public function store(Request $request){
+
         $validate = $request->validate([
             'nama' => 'required|string',
             'tahun_pengadaan' => 'required|date',
@@ -42,14 +43,24 @@ class InfrastructureController extends Controller
             'penyedia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'detail' => 'nullable|file|mimes: pdf,png,jpg,jpeg|max: 2048',
+            'detail' => 'nullable|mimes: pdf,png,jpg,jpeg|max: 2048',
             'catatan' => 'nullable|string'
         ]);
 
+        ddd();
+
+        if($request->hasFile('detail')){
+            $validate['detail'] = $request->file('detail')->store('file');
+        }else{
+            $path = '';
+        }
+
         if($request->isEmpty()){
             return back()->with('error', 'Silahkan Masukan Data Dengan Lengkap');
-        }else if($validate){
-            return;
         }
+
+        // ddd();
+
+        Infrastructure::create($validate);
     }
 }

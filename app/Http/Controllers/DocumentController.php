@@ -37,9 +37,10 @@ class DocumentController extends Controller
           'uraian' => 'nullable|string',
         ]); 
 
+
         // check if validation is valid?
         if(!$validate){
-            return back()->with('add-error', 'Data Is Invalid or Empty, Please Try Again!!');
+            return back()->withError();
         }
         // store data
         $store = Document::create($validate);
