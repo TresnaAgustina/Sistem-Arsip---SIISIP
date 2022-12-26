@@ -17,7 +17,13 @@
                     <!-- Page Heading -->
                     <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
                         <h1 class="h3 m-0 text-gray-800">Tabel Data Arsip Dokumen</h1>
-                        <a href="{{ url('/document_add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
+                        <div class="button-group d-flex w-auto gap-2">
+                            <a href="{{ url('/document_add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
+                            <form method="GET" action="{{ url('/document/exportExcel') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Ekspor Data <i class='bx bxs-file-export fs-5 align-top'></i> </button>
+                            </form>
+                        </div>
                     </div>
   
                     <!-- DataTales Example -->
@@ -35,6 +41,7 @@
                                             <th>Kategori</th>
                                             <th>Judul</th>
                                             <th>Uraian</th>
+                                            <th>Preview</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -51,6 +58,9 @@
                                                 <td class="py-3 px-2" style="">{{ $item-> kategori }}</td>
                                                 <td class="py-3 px-2" style="">{{ $item-> judul }}</td>
                                                 <td class="py-3 px-2" style="">{{ $item-> uraian }}</td>
+                                                <td class="py-3 px-2">
+                                                    <iframe src="{{ $item-> link_file }}" frameborder="0" width="auto" height="auto"></iframe>
+                                                </td>
                                                 <td class="py-3 px-2" style="">
                                                     <a href="{{ $item-> link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                     <a href="{{ url('/document_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>

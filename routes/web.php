@@ -5,6 +5,7 @@ use App\Http\Controllers\BsiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ExportFileController;
 use App\Http\Controllers\InfrastructureController;
 
 /*
@@ -24,8 +25,7 @@ use App\Http\Controllers\InfrastructureController;
 Route::controller(ViewController::class)->group(function (){
       // dashboard
       Route::get('/', 'index')->name('Home');
-      // register
-      Route::get('/reg', 'register')->name('sign-up');
+      // login
       Route::get('/login', 'login')->name('login');
 });
 
@@ -36,8 +36,6 @@ Route::controller(AuthController::class)->group(function () {
       Route::post('/login', 'authenticate');
       // Logout
       Route::post('/logout', 'destroy');
-      // Register
-      Route::post('/reg', 'register');
 });
 
 
@@ -110,6 +108,9 @@ Route::controller(InfrastructureController::class)->group(function () {
       // Get Data - Edit Data infrastructures
       Route::get('/infra_edit/{id}', 'edit')
             ->middleware('auth');
+      // Get Data - Detail Data infrastructure
+      Route::get('/infra/detail', 'detail')
+            ->middleware('auth');
       
       // Store Data - Insert Data
       Route::post('/infra_add', 'store');
@@ -120,3 +121,16 @@ Route::controller(InfrastructureController::class)->group(function () {
 });
 
 
+// ================================================ \\
+// ===== Export to Excel Route ===== \\
+// ================================================ \\
+Route::controller(ExportFileController::class)->group(function () {
+      // export excel for document
+      Route::get('/document/exportExcel', 'DocExportExcel');
+
+      // export excel for Bsi Data
+      Route::get('/bsi/exportExcel', 'BsiExportExcel');
+
+      // export excel for Infrastructure Data
+      Route::get('/infra/exportExcel', 'InfraExportExcel');
+});

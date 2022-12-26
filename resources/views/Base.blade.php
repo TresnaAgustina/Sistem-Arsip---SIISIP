@@ -37,7 +37,7 @@
             width: 100%;
         }
         .sidebar.toggled{
-                display: none;
+            display: none;
         }
         .topbar #sidebarToggleTop {
             width: 3rem;

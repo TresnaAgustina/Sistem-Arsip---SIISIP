@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,29 +28,53 @@ class DocumentController extends Controller
     // function store data document
     public function store(Request $request){
 
+        $data = $request->all();
+
         // Validation
-        $validate = $request->validate([
+        $rules = [
           'no_surat' => 'required|string',
           'tanggal' => 'required|date',
           'kategori' => 'required|string',
           'judul' => 'required|string',
           'link_file' => 'required|string',
           'uraian' => 'nullable|string',
-        ]); 
+        ]; 
 
+        // Create custom error meesage
+        $messages = [
+            'no_surat.required' => 'Harap Masukan Nomor Surat',
+            'tanggal.required' => 'Harap Masukan Tanggal',
+            'kategori.required' => 'Harap Masukan Kategori',
+            'judul.required' => 'Harap Masukan Judul',
+            'link_file.required' => 'Harap Masukan Link File',
+        ];
+
+        // validate data using validator class
+        $validator = Validator::make($data, $rules, $messages);
+
+        // check if validator is success?
+        if ($validator->fails()) {
+            // Redirect with error message
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            // Store data to database
+            $store = Document::create($data);
+            // Redirect to doc data page
+            return redirect('/document_data');
+        }
 
         // check if validation is valid?
-        if(!$validate){
-            return back()->withError();
-        }
+        // if(!$validate){
+        //     return back()->withError();
+        // }
         // store data
-        $store = Document::create($validate);
+        // $store = Document::create($validate);
 
         // validation if storing data successfully
-        if(!$store){
-            return back()->with('error', 'Failed To Input Data, Please Try Again!!');
-        }
-        return redirect('/document_data');
+    //     if(!$store){
+    //         return back()->with('error', 'Failed To Input Data, Please Try Again!!');
+    //     }
+    //     return redirect('/document_data');
     }
 
 

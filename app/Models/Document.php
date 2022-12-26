@@ -17,9 +17,4 @@ class Document extends Model
         'link_file',
         'uraian',
     ];
-
-
-    protected $hidden = [
-        'link_file',
-    ];
 }

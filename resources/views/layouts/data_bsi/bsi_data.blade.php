@@ -17,11 +17,15 @@
                     <!-- Page Heading -->
                     <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
                         <h1 class="h3 m-0 text-gray-800">Tabel Pendataan Bali Smart Island</h1>
-                        <div class="button-group">
-                        <a href="{{ url('/bsi_add') }}" class="btn btn-info p-3"><i class='bx bx-plus-circle fs-5 align-top'></i> Tambah Data</a>
-                        <button class="btn btn-primary p-3" onclick="exportExcel()"><i class='bx bxs-file-export fs-5 align-top'></i> Export Data</button>
-                        {{-- <a href="{{ url('/bsi_export') }}" class="btn btn-success p-3"></a> --}}
-                    </div>
+                        <div class="button-group d-flex w-auto gap-2 justify-content-center align-items-center">
+                            {{-- add data --}}
+                            <a href="{{ url('/bsi_add') }}" class=""><button class="btn btn-primary">Tambah Data <i class='bx bxs-file-plus '></i></button></a>
+                            {{-- export excel --}}
+                            <form method="GET" action="{{ url('/bsi/exportExcel') }}" class=" m-0">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Ekspor Excel <i class='bx bxs-file-export fs-5 align-top'></i> </button>
+                            </form>
+                        </div>
                     </div>
   
                     <!-- DataTales Example -->

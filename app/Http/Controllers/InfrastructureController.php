@@ -20,17 +20,6 @@ class InfrastructureController extends Controller
         return view('layouts.infrastructures.infra_add');
     }
 
-    // function view edit
-    public function edit(Int $id){
-        $find = Infrastructure::where('id', $id)->get();
-
-        if($find->isEmpty()){
-            return back()->withError('error', 'Data Tidak Ditemukan, Coba Lagi!');
-        }
-
-        return view('layouts.infrastructures.infra_edit', compact('find'));
-    }
-
     // ===== Logic ===== //
 
     // function add data
@@ -55,12 +44,24 @@ class InfrastructureController extends Controller
             $path = '';
         }
 
-        // $fileName = time().'.'.$request->file->extension();  
-   
-        // $request->file->move(public_path('uploads'), $fileName);
+        $store = Infrastructure::create($validate);
 
-
-        Infrastructure::create($validate);
+        if($store->isFails()){
+            return back()->with('error', 'Gagal menambahkan data!');
+        }
+        
         return redirect('/infra_data');
+    }
+
+
+    // function view edit
+    public function edit(Int $id){
+        $find = Infrastructure::where('id', $id)->get();
+
+        if($find->isEmpty()){
+            return back()->withError('error', 'Data Tidak Ditemukan, Coba Lagi!');
+        }
+
+        return view('layouts.infrastructures.infra_edit', compact('find'));
     }
 }
