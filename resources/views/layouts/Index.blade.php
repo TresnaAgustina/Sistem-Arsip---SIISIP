@@ -33,7 +33,7 @@
                                                 <div class="fs-5 font-weight-bold text-primary text-uppercase mb-1">
                                                     Arsip Dokumen</div>
                                                     {{-- @foreach ($countBsi as $item) --}}
-                                                        <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>120</b></div>
+                                                        <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>{{ $doc_count }}</b></div>
                                                     {{-- @endforeach --}}
                                             </div>
                                             <div class="col-auto">
@@ -52,7 +52,7 @@
                                             <div class="col mr-2">
                                                 <div class="fs-5 font-weight-bold text-danger text-uppercase mb-1">
                                                     Bali Smart Island</div>
-                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>20</b></div>
+                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>{{ $bsi_count }}</b></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class='bx bx-wifi text-gray-400 fa-3x' ></i>
@@ -70,7 +70,7 @@
                                             <div class="col mr-2">
                                                 <div class="fs-5 font-weight-bold text-success text-uppercase mb-1">
                                                     CCTV</div>
-                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>10</b></div>
+                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>{{ $cctv_count }}</b></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class='bx bxs-cctv text-gray-400 fa-3x' ></i>
@@ -88,7 +88,7 @@
                                             <div class="col mr-2">
                                                 <div class="fs-5 font-weight-bold text-info text-uppercase mb-1">
                                                     Videotron</div>
-                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>10</b></div>
+                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>{{ $vidtron_count }}</b></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class='bx bxs-tv text-gray-400 fa-3x' ></i>
@@ -106,7 +106,7 @@
                                             <div class="col mr-2">
                                                 <div class="fs-4 font-weight-bold text-warning text-uppercase mb-1">
                                                     Intranet</div>
-                                                <div class="h6 mb-0 font-weight-bold text-gray-800">Total Data: <b>18</b></div>
+                                                <div class="h6 mb-0 font-weight-bold text-gray-800">Total Data: <b>{{ $intranet_count }}</b></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class='bx bxs-network-chart text-gray-400 fa-3x' ></i>
@@ -124,7 +124,7 @@
                                             <div class="col mr-2">
                                                 <div class="fs-5 font-weight-bold text-primary text-uppercase mb-1">
                                                     Server</div>
-                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>14</b></div>
+                                                <div class="h6 mb-0 font-weight-medium text-gray-800">Total Data: <b>{{ $server_count }}</b></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class='bx bxs-server text-gray-400 fa-3x'></i>

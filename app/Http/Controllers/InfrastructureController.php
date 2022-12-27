@@ -46,11 +46,11 @@ class InfrastructureController extends Controller
 
         $store = Infrastructure::create($validate);
 
-        if($store->isFails()){
+        if(!$store){
             return back()->with('error', 'Gagal menambahkan data!');
         }
         
-        return redirect('/infra');
+        return redirect('/infrastructure');
     }
 
 
