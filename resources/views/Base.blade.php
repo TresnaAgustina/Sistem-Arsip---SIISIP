@@ -238,8 +238,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     {{-- sbadmin js --}}
     <script src="{{ asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
+    {{-- chart --}}
+    <script src="{{ asset('chart.js/chart.js') }}"></script>
+
     {{-- custom js --}}
     <script>
+        // chart.js
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var myChart = new Chart(ctx, { });
+
         // script defaults datatables
         $(document).ready( function () {
             $('#dataTable').DataTable();
