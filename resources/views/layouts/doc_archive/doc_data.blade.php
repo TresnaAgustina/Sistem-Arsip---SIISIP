@@ -6,7 +6,7 @@
                 <div class="container-fluid">
 
                     {{-- error message --}}
-                    @if(session()->has('error'))
+                    @if(session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Warning!</strong> {{ session('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -14,11 +14,21 @@
                     @endif
                     {{-- /error message --}}    
 
+                    
+                  {{-- Success message --}}
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    {{-- end success meesage --}}
+
                     <!-- Page Heading -->
                     <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
                         <h1 class="h3 m-0 text-gray-800">Tabel Data Arsip Dokumen</h1>
                         <div class="button-group d-flex w-auto gap-2">
-                            <a href="{{ url('/document_add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
+                            <a href="{{ url('/document/add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
                             <form method="GET" action="{{ url('/document/exportExcel') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Ekspor Data <i class='bx bxs-file-export fs-5 align-top'></i> </button>
@@ -36,12 +46,12 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>No.Surat</th>
                                             <th>Tanggal</th>
                                             <th>Kategori</th>
                                             <th>Judul</th>
                                             <th>Uraian</th>
-                                            <th>Preview</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -53,28 +63,22 @@
                                         @endif
                                         @foreach ($documents as $item)
                                             <tr>
-                                                <td class="py-3 px-2" style="">{{ $item-> no_surat }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item-> tanggal }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item-> kategori }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item-> judul }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item-> uraian }}</td>
-                                                <td class="py-3 px-2">
-                                                    <iframe src="{{ $item-> link_file }}" frameborder="0" width="auto" height="auto"></iframe>
-                                                </td>
+                                                <td>1</td>
+                                                <td class="py-3 px-2" style="">{{ $item->no_surat }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item->tanggal }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item->kategori }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item->judul }}</td>
+                                                <td class="py-3 px-2" style="">{{ $item->uraian }}</td>
                                                 <td class="py-3 px-2" style="">
-                                                    <a href="{{ $item-> link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
-                                                    <a href="{{ url('/document_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                    <a href="{{ $item->link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
+                                                    <a href="{{ url('/document/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                     {{-- <hr class="sidebar-divider"> --}}
-                                                    <a href="{{ url('/document_destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Are you sure you want to delete this?')"><i class='bx bxs-trash'></i></a>
+                                                    <a href="{{ url('/document/destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Are you sure you want to delete this?')"><i class='bx bxs-trash'></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="pagination-wrapper">
-                                    {{-- pagination link --}}
-                                    {{ $documents->onEachSide(5)->links() }}
-                                </div>
                             </div>
                         </div>
                     </div>

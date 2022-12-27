@@ -50,7 +50,7 @@ class InfrastructureController extends Controller
             return back()->with('error', 'Gagal menambahkan data!');
         }
         
-        return redirect('/infra_data');
+        return redirect('/infra');
     }
 
 

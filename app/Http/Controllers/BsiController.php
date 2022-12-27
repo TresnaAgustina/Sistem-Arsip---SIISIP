@@ -51,7 +51,7 @@ class BsiController extends Controller
             if($valid){
                 $store = Bsi::create($valid);
                 if($store){
-                    return redirect('/bsi_data');
+                    return redirect('/bsi');
                 }else{
                     return back()->with('error', 'Gagal Menyimpan Data, Silahkan Coba Lagi!');
                 }
@@ -103,14 +103,14 @@ class BsiController extends Controller
             return back()->with('error', 'Gagal untuk melakukan update data, silahkan coba lagi!');
         }
 
-        return redirect('/bsi_data');
+        return redirect('/bsi');
     }
     // function for Delete Data
     public function destroy(Int $id){
         $delete = Bsi::where('id', $id)->delete();
 
         if($delete){
-            return redirect('/bsi_data');
+            return redirect('/bsi');
         }else{
             return back()->with('error', 'Failed to delete post');
         }

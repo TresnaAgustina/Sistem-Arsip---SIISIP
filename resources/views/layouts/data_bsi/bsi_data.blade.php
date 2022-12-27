@@ -19,7 +19,7 @@
                         <h1 class="h3 m-0 text-gray-800">Tabel Pendataan Bali Smart Island</h1>
                         <div class="button-group d-flex w-auto gap-2 justify-content-center align-items-center">
                             {{-- add data --}}
-                            <a href="{{ url('/bsi_add') }}" class=""><button class="btn btn-primary">Tambah Data <i class='bx bxs-file-plus '></i></button></a>
+                            <a href="{{ url('/bsi/add') }}" class=""><button class="btn btn-primary">Tambah Data <i class='bx bxs-file-plus '></i></button></a>
                             {{-- export excel --}}
                             <form method="GET" action="{{ url('/bsi/exportExcel') }}" class=" m-0">
                                 @csrf
@@ -66,27 +66,27 @@
                                                 </tr>
                                             @endif
                                             @foreach ($bsi as $item)
-                                                    <tr>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> kategori }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> kabupaten }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> kecamatan }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> desa }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> desa_pekraman }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> data_lokasi }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> media }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> layanan }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> lokasi }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> latitude }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> longitude }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> nama_pic }}</td>
-                                                        <td class="py-3 px-2 align-middle">{{ $item-> nomor_tlp }}</td>
-                                                        <td class="py-3 px-2 text-center align-middle">
-                                                            {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
-                                                            <a href="{{ url('/bsi_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
-                                                            {{-- <hr class="sidebar-divider"> --}}
-                                                            <a href="{{ url('/bsi_destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
-                                                        </td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> kategori }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> kabupaten }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> kecamatan }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> desa }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> desa_pekraman }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> data_lokasi }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> media }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> layanan }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> lokasi }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> latitude }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> longitude }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> nama_pic }}</td>
+                                                    <td class="py-3 px-2 align-middle">{{ $item-> nomor_tlp }}</td>
+                                                    <td class="py-3 px-2 text-center align-middle">
+                                                        {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
+                                                        <a href="{{ url('/bsi/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                        {{-- <hr class="sidebar-divider"> --}}
+                                                        <a href="{{ url('/bsi/destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                     </tbody>
                                 </table>

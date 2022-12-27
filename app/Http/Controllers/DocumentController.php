@@ -16,6 +16,7 @@ class DocumentController extends Controller
         $documents = DB::table('documents')
         ->orderBy('tanggal', 'desc')
         ->paginate(5);
+
         return view('layouts.doc_archive.doc_data', compact('documents'));
     }
 
@@ -54,27 +55,18 @@ class DocumentController extends Controller
 
         // check if validator is success?
         if ($validator->fails()) {
+            // displaying error message
+            session()->flash('error', 'Data gagal disimpan, coba lagi!');
             // Redirect with error message
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
             // Store data to database
-            $store = Document::create($data);
+            Document::create($data);
+            // displaying success message
+            session()->flash('success', 'Data berhasil disimpan!');
             // Redirect to doc data page
-            return redirect('/document_data');
+            return redirect('/document');
         }
-
-        // check if validation is valid?
-        // if(!$validate){
-        //     return back()->withError();
-        // }
-        // store data
-        // $store = Document::create($validate);
-
-        // validation if storing data successfully
-    //     if(!$store){
-    //         return back()->with('error', 'Failed To Input Data, Please Try Again!!');
-    //     }
-    //     return redirect('/document_data');
     }
 
 
@@ -88,18 +80,25 @@ class DocumentController extends Controller
     // function update data
     public function update(Request $request, Int $id){
          // Validation
-         $validation = $request->validate([
+         $validation = [
             'no_surat' => 'required|string',
             'tanggal' => 'required|date',
             'kategori' => 'required|string',
             'judul' => 'required|string',
             'link_file' => 'required|string',
             'uraian' => 'required|string',
-          ]); 
+          ]; 
 
-          if(!$validation){
-            return back()->with('error', 'Update Data Failed, Please Try Again!!');
-          }
+          // Create custom error meesage
+        $messages = [
+            'no_surat.required' => 'Harap Masukan Nomor Surat',
+            'tanggal.required' => 'Harap Masukan Tanggal',
+            'kategori.required' => 'Harap Masukan Kategori',
+            'judul.required' => 'Harap Masukan Judul',
+            'link_file.required' => 'Harap Masukan Link File',
+        ];
+
+          $validator = Validator::make($validation, $messages);
 
           $update = Document::where('id', $id)->update([
             'no_surat' => $request->no_surat,
@@ -112,9 +111,14 @@ class DocumentController extends Controller
 
         //   validation if update was successfully
         if($update){
-            return redirect('/document_data');
+            // displaying success message
+            session()->flash('success', 'Data berhasil disimpan!');
+            return redirect('/document');
         }else{
-            return back()->with('error', 'Update Data Failed, Please Try Again!!');
+            // displaying error message
+            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            // Redirect with error message
+            return redirect()->back()->withErrors($validator)->withInput();
         }
     }
 
@@ -125,7 +129,7 @@ class DocumentController extends Controller
         $delete = Document::where('id', $id)->delete();
 
         if($delete){
-            return redirect('/document_data');
+            return redirect('/document');
         }else{
             return back()->with('error', 'Failed to delete post');
         }

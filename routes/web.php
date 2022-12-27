@@ -44,24 +44,24 @@ Route::controller(AuthController::class)->group(function () {
 // ======================================= \\
 Route::controller(DocumentController::class)->group(function () {
       // View All Archive Data
-      Route::get('/document_data', 'index')
+      Route::get('/document', 'index')
             ->middleware('auth');
       // View Detail Archive Data
-      Route::get('/document_detail', 'detail')
+      Route::get('/document/detail', 'detail')
             ->middleware('auth');
       // View Insert Data
-      Route::get('/document_add', 'add')
+      Route::get('/document/add', 'add')
             ->middleware('auth');
       // Get Data - Edit Data Archive Document
-      Route::get('/document_edit/{id}', 'edit')
+      Route::get('/document/edit/{id}', 'edit')
             ->middleware('auth');
       
       // Store Data - Insert Data
-      Route::post('/document_add', 'store');
+      Route::post('/document/add', 'store');
       // Store Data - Edit Data Archive Document
-      Route::post('/document_update/{id}', 'update');
+      Route::post('/document/update/{id}', 'update');
       // Delete Data - Edit Data Archive Document
-      Route::get('/document_destroy/{id}', 'destroy');
+      Route::get('/document/destroy/{id}', 'destroy');
 });
 
 
@@ -70,24 +70,24 @@ Route::controller(DocumentController::class)->group(function () {
 // ================================================ \\
 Route::controller(BsiController::class)->group(function () {
       // View All Data
-      Route::get('/bsi_data', 'index')
+      Route::get('/bsi', 'index')
             ->middleware('auth');
       // View Detail Data
-      Route::get('/bsi_detail', 'detail')
+      Route::get('/bsi/detail', 'detail')
             ->middleware('auth');
       // View Insert Data
-      Route::get('/bsi_add', 'add')
+      Route::get('/bsi/add', 'add')
             ->middleware('auth');
       // Get Data - Edit Data bsi
-      Route::get('/bsi_edit/{id}', 'edit')
+      Route::get('/bsi/edit/{id}', 'edit')
             ->middleware('auth');
       
       // Store Data - Insert Data
-      Route::post('/bsi_add', 'store');
+      Route::post('/bsi/add', 'store');
       // Store Data - Edit Data bsi
-      Route::post('/bsi_update/{id}', 'update');
+      Route::post('/bsi/update/{id}', 'update');
       // Delete Data - Edit Data bsi
-      Route::get('/bsi_destroy/{id}', 'destroy');
+      Route::get('/bsi/destroy/{id}', 'destroy');
 });
 
 
@@ -97,27 +97,27 @@ Route::controller(BsiController::class)->group(function () {
 // ================================================ \\
 Route::controller(InfrastructureController::class)->group(function () {
       // View All Data
-      Route::get('/infra_data', 'index')
+      Route::get('/infrastructure', 'index')
             ->middleware('auth');
       // View Detail Data
-      Route::get('/infra_detail', 'detail')
+      Route::get('/infrastructure/detail', 'detail')
             ->middleware('auth');
       // View Insert Data
-      Route::get('/infra_add', 'add')
+      Route::get('/infrastructure/add', 'add')
             ->middleware('auth');
       // Get Data - Edit Data infrastructures
-      Route::get('/infra_edit/{id}', 'edit')
+      Route::get('/infrastructure/edit/{id}', 'edit')
             ->middleware('auth');
       // Get Data - Detail Data infrastructure
-      Route::get('/infra/detail', 'detail')
+      Route::get('/infrastructure/detail', 'detail')
             ->middleware('auth');
       
       // Store Data - Insert Data
-      Route::post('/infra_add', 'store');
+      Route::post('/infrastructure/add', 'store');
       // Store Data - Edit Data infrastructures
-      Route::post('/infra_update/{id}', 'update');
+      Route::post('/infrastructure/update/{id}', 'update');
       // Delete Data - Edit Data infrastructures
-      Route::get('/infra_destroy/{id}', 'destroy');
+      Route::get('/infrastructure/destroy/{id}', 'destroy');
 });
 
 

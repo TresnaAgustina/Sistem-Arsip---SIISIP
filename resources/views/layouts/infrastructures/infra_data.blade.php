@@ -17,7 +17,7 @@
                   <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
                         <h1 class="h3 m-0 text-gray-800">Tabel Pendataan Infrastruktur</h1>
                         <div class="button-group d-flex w-auto gap-2">
-                            <a href="{{ url('/infra_add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
+                            <a href="{{ url('/infra/add') }}" class="btn btn-info">Tambah Data <i class='bx bxs-file-plus '></i></a>
                             <form method="GET" action="{{ url('/document/exportExcel') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Ekspor Data <i class='bx bxs-file-export fs-5 align-top'></i> </button>
@@ -76,9 +76,9 @@
                                                       <td class="py-3 px-2 text-center align-middle">
                                                           <a href="{{ url('/infra/detail') }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                           {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
-                                                          <a href="{{ url('/infra_edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                          <a href="{{ url('/infra/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                           {{-- <hr class="sidebar-divider"> --}} 
-                                                          <a href="{{ url('/infra_destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
+                                                          <a href="{{ url('/infra/destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
                                                       </td>
                                                   </tr>
                                           @endforeach

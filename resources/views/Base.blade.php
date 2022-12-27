@@ -96,8 +96,8 @@
                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSidebar">
                           <div class="bg-white py-2 collapse-inner rounded">
                               <h6 class="collapse-header">Arsip Dokumen</h6>
-                              <a class="collapse-item" href="{{ url('/document_data') }}">Semua Data</a>
-                              <a class="collapse-item" href="{{ url('/document_add') }}">Input Data</a>
+                              <a class="collapse-item" href="{{ url('/document') }}">Semua Data</a>
+                              <a class="collapse-item" href="{{ url('/document/add') }}">Input Data</a>
                           </div>
                       </div>
                   </li>
@@ -121,8 +121,8 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Pencatatan BSI</h6>
-                            <a class="collapse-item" href="{{ url('/bsi_data') }}">Semua Data</a>
-                            <a class="collapse-item" href="{{ url('/bsi_add') }}">Input Data</a>
+                            <a class="collapse-item" href="{{ url('/bsi') }}">Semua Data</a>
+                            <a class="collapse-item" href="{{ url('/bsi/add') }}">Input Data</a>
                         </div>
                     </div>
                 </li>
@@ -138,8 +138,8 @@
                     <div id="collapsefour" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Pencatatan</h6>
-                            <a class="collapse-item" href="{{ url('/infra_data') }}">Semua Data</a>
-                            <a class="collapse-item" href="{{ url('/infra_add') }}">Input Data</a>
+                            <a class="collapse-item" href="{{ url('/infra') }}">Semua Data</a>
+                            <a class="collapse-item" href="{{ url('/infra/add') }}">Input Data</a>
                         </div>
                     </div>
                 </li>
