@@ -2,28 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Infrastructure;
 use Validator;
 use Illuminate\Http\Request;
+use App\Models\Infrastructure;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class InfrastructureController extends Controller
 {
-    // function index
+    // ===== function index =====
     public function index(){
         $infra = Infrastructure::orderBy('id', 'desc')->get();
 
         return view('layouts.infrastructures.infra_data', compact('infra'));
     }
 
-    // function view add
+    // ===== function view add =====
     public function add(){
         return view('layouts.infrastructures.infra_add');
     }
 
-    // ===== Logic ===== //
+    // ===== function detail data =====
+    public function detail(Int $id){
+        $find = Infrastructure::where('id', $id)->get();
 
-    // function add data
+        return view('layouts.infrastructures.infra_detail', compact('find'));
+    }
+
+    // ===== ===== Logic ===== ===== //
+
+    // ===== function add data =====
     public function store(Request $request){
 
         // get all data from request
@@ -68,19 +77,16 @@ class InfrastructureController extends Controller
     }
 
 
-    // function view edit
+    // ===== function view edit =====
     public function edit(Int $id){
         $find = Infrastructure::where('id', $id)->get();
-
-        if($find->isEmpty()){
-            return back()->withError('error', 'Data Tidak Ditemukan, Coba Lagi!');
-        }
 
         return view('layouts.infrastructures.infra_edit', compact('find'));
     }
 
-    // function for Update Data
+    // ===== function for Update Data =====
     public function update(Request $request, Int $id){
+
         $validation = Validator::make($request->all(), [
             'nama' => 'required|string',
             'kategori' => 'required|string',
@@ -97,13 +103,16 @@ class InfrastructureController extends Controller
             return redirect()->back()->withErrors($validation)->withInput();
         }
 
-        if($request->file('detail')){
-            if($request->oldProfile){
-                Storage::delete($request->oldProfile);
-            }
-            $validate['detail'] = $request->file('detail')->store('files');
-       }
 
+        // $file = Infrastructure::select('detail')->where('id', $id)->first();
+        if ($request->has('old_file')) {
+            // hapus file lama
+            Storage::delete($request->old_file);
+          }
+            $file = $request->file('detail');
+            $path = $file->store('files');
+
+        // $update = Infrastructure::where('id', $id)->update($validation);
         $update = Infrastructure::where('id', $id)->update([
             'nama' => $request-> nama,
             'kategori' => $request-> kategori,
@@ -122,6 +131,19 @@ class InfrastructureController extends Controller
 
         return redirect('/infrastructure');
     }
+
+
+    // function for Delete Data
+    public function destroy(Int $id){
+        $delete = Infrastructure::where('id', $id)->delete();
+
+        if($delete){
+            return redirect('/infrastructure');
+        }else{
+            return back()->with('error', 'Failed to delete post');
+        }
+    }
+    
 }
 
 

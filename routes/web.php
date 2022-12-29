@@ -106,18 +106,18 @@ Route::controller(InfrastructureController::class)->group(function () {
       Route::get('/infrastructure/add', 'add')
             ->middleware('auth');
       // Get Data - Edit Data infrastructures
-      Route::get('/infrastructure/edit/{id}', 'edit')
+      Route::get('/infrastructure/{id}/edit', 'edit')
             ->middleware('auth');
       // Get Data - Detail Data infrastructure
-      Route::get('/infrastructure/detail', 'detail')
+      Route::get('/infrastructure/{id}/detail', 'detail')
             ->middleware('auth');
       
       // Store Data - Insert Data
       Route::post('/infrastructure/add', 'store');
       // Store Data - Edit Data infrastructures
-      Route::post('/infrastructure/update/{id}', 'update');
+      Route::post('/infrastructure/{id}/update', 'update');
       // Delete Data - Edit Data infrastructures
-      Route::get('/infrastructure/destroy/{id}', 'destroy');
+      Route::get('/infrastructure/{id}/destroy', 'destroy');
 });
 
 

@@ -34,7 +34,7 @@
                   </div>
 
                   @foreach ($find as $item)
-                        <form action="{{ url('/infrastructure/add') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/infrastructure/'.$item-> id.'/update') }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               {{-- row --}}
                               <div class="row mb-4">
@@ -129,6 +129,8 @@
                                           <label class="form-label" for="option4">Detail</label>
                                           <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="300" height="300"></iframe>
                                           <input type="file" id="option4" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ $item-> detail }}" />
+                                          {{-- oldFile --}}
+                                          <input type="hidden" id="old_file" name="old_file" value="{{ $item-> detail }}"><br><br>
                                           @error('detail')
                                           <div class="fs-6 error text-danger my-1">*{{ $message }}</div>
                                           @enderror

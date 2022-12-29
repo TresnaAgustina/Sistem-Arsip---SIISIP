@@ -33,7 +33,7 @@
                           </div>
                       <div class="card-body">
                           <div class="table-responsive">
-                              <table class="table table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
+                              <table class="table table-bordered nowrap table-striped" id="dataTable" width="100%" cellspacing="0">
                                    <thead class="thead-dark">
                                       <tr>
                                           <th rowspan="2" class="text-center align-middle">No</th>
@@ -43,8 +43,8 @@
                                           <th rowspan="2" class="text-center align-middle">Penyedia</th>
                                           <th rowspan="2" class="text-center align-middle">Lokasi</th>
                                           <th colspan="2" class="text-center text-center">kordinat</th>
-                                          <th rowspan="2" class="text-center align-middle">Previews</th>
                                           <th rowspan="2" class="text-center align-middle">Catatan</th>
+                                          <th rowspan="2" class="text-center align-middle">Detail</th>
                                           <th rowspan="2" class="text-center align-middle">Action</th>
                                       </tr>
                                       <tr>
@@ -60,25 +60,23 @@
                                           @endif
                                           @foreach ($infra as $no => $item)
                                                   <tr>
-                                                      <td class="py-3 px-2 text-center align-middle">{{ $no + 1 }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> kategori }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> nama }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> tahun_pengadaan }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> penyedia }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> lokasi }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> latitude }}</td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> longitude }}</td>
-                                                      <td class="py-3 px-2">
-                                                        {{-- <img src="{{ asset('storage/'.$item-> detail) }}" alt="Img"> --}}
-                                                        <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="200" height="200"></iframe>
+                                                      <td class="px-3 text-center align-middle">{{ $no + 1 }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> kategori }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> nama }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> tahun_pengadaan }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> penyedia }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> lokasi }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> latitude }}</td>
+                                                      <td class="px-3 align-middle">{{ $item-> longitude }}</td>
+                                                      <td class="px-3 text-break" style="min-width: 20rem;">{{ $item-> catatan }}</td>
+                                                      <td class="px-3 text-center">
+                                                        <a href="{{ url('/infrastructure/'.$item-> id.'/detail') }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                       </td>
-                                                      <td class="py-3 px-2 text-break" style="min-width: 20rem;">{{ $item-> catatan }}</td>
-                                                      <td class="py-3 px-2 text-center align-middle">
-                                                          <a href="{{ url('/infrastructure/detail') }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
+                                                      <td class="px-3 text-center align-middle">
                                                           {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
-                                                          <a href="{{ url('/infrastructure/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                          <a href="{{ url('/infrastructure/'.$item-> id.'/edit') }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                           {{-- <hr class="sidebar-divider"> --}} 
-                                                          <a href="{{ url('/infrastructure/destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
+                                                          <a href="{{ url('/infrastructure/'.$item-> id.'/destroy') }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
                                                       </td>
                                                   </tr>
                                           @endforeach
@@ -87,12 +85,6 @@
                           </div>
                       </div>
                   </div>
-                      {{-- pagination link --}}
-                      {{-- <nav aria-label="Page navigation">
-                          <ul class="pagination  pagination-sm">
-                              {{ $infra->onEachSide(5)->links() }}
-                          </ul>
-                      </nav> --}}
               </div>
               <!-- /.container-fluid -->
 

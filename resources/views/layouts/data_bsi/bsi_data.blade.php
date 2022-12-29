@@ -37,7 +37,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-responsive table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-striped table-responsive table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
                                      <thead class="table-dark">
                                         <tr>
                                             <th rowspan="2" class="text-center align-middle">No</th>
@@ -68,21 +68,21 @@
                                             @endif
                                             @foreach ($bsi as $index => $item)
                                                 <tr>
-                                                    <td class="py-3 px-2 align-middle">{{ $index + 1 }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> kategori }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> kabupaten }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> kecamatan }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> desa }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> desa_pekraman }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> data_lokasi }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> media }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> layanan }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> lokasi }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> latitude }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> longitude }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> nama_pic }}</td>
-                                                    <td class="py-3 px-2 align-middle">{{ $item-> nomor_tlp }}</td>
-                                                    <td class="py-3 px-2 text-center align-middle">
+                                                    <td class="px-3 align-middle">{{ $index + 1 }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> kategori }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> kabupaten }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> kecamatan }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> desa }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> desa_pekraman }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> data_lokasi }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> media }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> layanan }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> lokasi }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> latitude }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> longitude }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> nama_pic }}</td>
+                                                    <td class="px-3 align-middle">{{ $item-> nomor_tlp }}</td>
+                                                    <td class="px-3 text-center align-middle">
                                                         {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
                                                         <a href="{{ url('/bsi/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                         {{-- <hr class="sidebar-divider"> --}}
