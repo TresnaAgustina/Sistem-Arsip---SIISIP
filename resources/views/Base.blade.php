@@ -50,6 +50,11 @@
                 padding: 0 4rem;
             }
         }
+
+        /* kolom catatan */
+        .catatan{
+            word-wrap: break-word !important; 
+        }
       </style>
 
 </head>
@@ -66,7 +71,7 @@
                       </div>
                       <div class="sidebar-brand-text mx-3 text-primary">SIISIP <sup>v1.0</sup></div>
                   </a>
-      
+
                   <!-- Divider -->
                   <hr class="sidebar-divider my-0">
       
@@ -238,24 +243,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     {{-- sbadmin js --}}
     <script src="{{ asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
-    {{-- chart --}}
-    <script src="{{ asset('chart.js/chart.js') }}"></script>
+    {{-- chart js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
     {{-- custom js --}}
     <script>
-        // chart.js
-        var ctx = document.getElementById('myPieChart').getContext('2d');
-        var myChart = new Chart(ctx, { });
-
-        // script defaults datatables
-        $(document).ready( function () {
+        // datatables
+        $(document).ready(function () {
             $('#dataTable').DataTable();
-        } );
-
+        });
         // function for sidebar
         function navToggle() {
         document.getElementById("accordionSidebar").classList.toggle("show");
     }
     </script>
+
+    @stack('scripts')
 </body>
 </html>

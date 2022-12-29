@@ -37,9 +37,10 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
-                                     <thead>
+                                <table class="table table-responsive table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
+                                     <thead class="table-dark">
                                         <tr>
+                                            <th rowspan="2" class="text-center align-middle">No</th>
                                             <th rowspan="2" class="text-center align-middle">Kategori</th>
                                             <th rowspan="2" class="text-center align-middle">Kabupaten</th>
                                             <th rowspan="2" class="text-center align-middle">Kecamatan</th>
@@ -65,8 +66,9 @@
                                                     <td colspan="15" class="text-center fs-4">Data Is Empty</td>
                                                 </tr>
                                             @endif
-                                            @foreach ($bsi as $item)
+                                            @foreach ($bsi as $index => $item)
                                                 <tr>
+                                                    <td class="py-3 px-2 align-middle">{{ $index + 1 }}</td>
                                                     <td class="py-3 px-2 align-middle">{{ $item-> kategori }}</td>
                                                     <td class="py-3 px-2 align-middle">{{ $item-> kabupaten }}</td>
                                                     <td class="py-3 px-2 align-middle">{{ $item-> kecamatan }}</td>

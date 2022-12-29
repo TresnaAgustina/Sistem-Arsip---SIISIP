@@ -4,21 +4,29 @@
     <section class="container-fluid">
             <div class="container">
 
-              @if($errors->any())
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>Warning!</strong> {{ session()->get('message') }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              @endif
-              
-                  {{-- error message --}}
-                  {{-- @if(session()->has('error'))
-                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Warning!</strong> {{ session()->get('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                  @endif --}}
-                  {{-- /error message --}}
+            {{-- error message --}}
+            @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>PERHATIKAN!</strong><br>
+              <ul>
+              @foreach ($errors->all() as $error)
+                 <li>{{ $error }}</li>
+              @endforeach 
+              </ul>
+
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+          {{-- /error message --}}
+
+          {{-- error message --}}
+          @if(session('error'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Perhatian, </strong>{{ session('error') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+          {{-- end error meesage --}}
                   
             <!-- Page Heading -->
             <div class="heading-group d-flex align-items-center justify-content-between gap-3 my-5 w-100%">

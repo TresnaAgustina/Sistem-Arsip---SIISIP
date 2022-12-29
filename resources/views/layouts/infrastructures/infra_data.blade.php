@@ -28,23 +28,22 @@
 
                   <!-- DataTales Example -->
                   <div class="card shadow mb-4">
-                      <div class="header-group d-flex align-items-center justify-content-between card-header">
-                          <div class="py-3">
+                          <div class="card-header py-3">
                               <h6 class="m-0 font-weight-bold text-primary">Data BSI</h6>
                           </div>
-                      </div>
                       <div class="card-body">
                           <div class="table-responsive">
                               <table class="table table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
-                                   <thead>
+                                   <thead class="thead-dark">
                                       <tr>
+                                          <th rowspan="2" class="text-center align-middle">No</th>
                                           <th rowspan="2" class="text-center align-middle">Kategori</th>
                                           <th rowspan="2" class="text-center align-middle">Nama</th>
                                           <th rowspan="2" class="text-center align-middle">Tahun Pengadaan</th>
                                           <th rowspan="2" class="text-center align-middle">Penyedia</th>
                                           <th rowspan="2" class="text-center align-middle">Lokasi</th>
                                           <th colspan="2" class="text-center text-center">kordinat</th>
-                                          <th rowspan="2" class="text-center align-middle">Detail</th>
+                                          <th rowspan="2" class="text-center align-middle">Previews</th>
                                           <th rowspan="2" class="text-center align-middle">Catatan</th>
                                           <th rowspan="2" class="text-center align-middle">Action</th>
                                       </tr>
@@ -59,8 +58,9 @@
                                                   <td colspan="15" class="text-center fs-4">Data Is Empty</td>
                                               </tr>
                                           @endif
-                                          @foreach ($infra as $item)
+                                          @foreach ($infra as $no => $item)
                                                   <tr>
+                                                      <td class="py-3 px-2 text-center align-middle">{{ $no + 1 }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> kategori }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> nama }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> tahun_pengadaan }}</td>
@@ -68,11 +68,11 @@
                                                       <td class="py-3 px-2 align-middle">{{ $item-> lokasi }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> latitude }}</td>
                                                       <td class="py-3 px-2 align-middle">{{ $item-> longitude }}</td>
-                                                      <td class="py-3 px-2 align-middle">
+                                                      <td class="py-3 px-2">
                                                         {{-- <img src="{{ asset('storage/'.$item-> detail) }}" alt="Img"> --}}
-                                                        <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="auto" height="auto"></iframe>
+                                                        <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="200" height="200"></iframe>
                                                       </td>
-                                                      <td class="py-3 px-2 align-middle">{{ $item-> catatan }}</td>
+                                                      <td class="py-3 px-2 text-break" style="min-width: 20rem;">{{ $item-> catatan }}</td>
                                                       <td class="py-3 px-2 text-center align-middle">
                                                           <a href="{{ url('/infrastructure/detail') }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                           {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
@@ -110,3 +110,4 @@
   </footer>
   <!-- End of Footer -->
 @endsection
+

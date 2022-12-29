@@ -43,16 +43,16 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                <table class="table table-light table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="thead-dark">
                                         <tr>
-                                            <th>No</th>
-                                            <th>No.Surat</th>
-                                            <th>Tanggal</th>
-                                            <th>Kategori</th>
-                                            <th>Judul</th>
-                                            <th>Uraian</th>
-                                            <th>Action</th>
+                                            <th rowspan="2" class="text-center align-middle">No</th>
+                                            <th rowspan="2" class="text-center align-middle">No.Surat</th>
+                                            <th rowspan="2" class="text-center align-middle">Tanggal</th>
+                                            <th rowspan="2" class="text-center align-middle">Kategori</th>
+                                            <th rowspan="2" class="text-center align-middle">Judul</th>
+                                            <th rowspan="2" class="text-center align-middle">Uraian</th>
+                                            <th rowspan="2" class="text-center align-middle">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,15 +61,15 @@
                                                 <td colspan="6" class="text-center fs-4">Data Is Empty</td>
                                             </tr>
                                         @endif
-                                        @foreach ($documents as $item)
+                                        @foreach ($documents as $index => $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td class="py-3 px-2" style="">{{ $item->no_surat }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item->tanggal }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item->kategori }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item->judul }}</td>
-                                                <td class="py-3 px-2" style="">{{ $item->uraian }}</td>
-                                                <td class="py-3 px-2" style="">
+                                                <td>{{ $index + 1 }}</td>
+                                                <td class="py-2 px-2" style="">{{ $item->no_surat }}</td>
+                                                <td class="py-2 px-2" style="">{{ $item->tanggal }}</td>
+                                                <td class="py-2 px-2" style="">{{ $item->kategori }}</td>
+                                                <td class="py-2 px-2" style="">{{ $item->judul }}</td>
+                                                <td class="py-2 px-2" style="">{{ $item->uraian }}</td>
+                                                <td class="py-2 px-2 text-center align-middle" style="">
                                                     <a href="{{ $item->link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                     <a href="{{ url('/document/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                     {{-- <hr class="sidebar-divider"> --}}

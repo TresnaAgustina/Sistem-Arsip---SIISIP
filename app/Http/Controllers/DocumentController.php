@@ -29,6 +29,7 @@ class DocumentController extends Controller
     // function store data document
     public function store(Request $request){
 
+        // get all data from request
         $data = $request->all();
 
         // Validation
@@ -79,6 +80,7 @@ class DocumentController extends Controller
 
     // function update data
     public function update(Request $request, Int $id){
+        $data = $request->all();
          // Validation
          $validation = [
             'no_surat' => 'required|string',
@@ -89,7 +91,7 @@ class DocumentController extends Controller
             'uraian' => 'required|string',
           ]; 
 
-          // Create custom error meesage
+        // Create custom error meesage
         $messages = [
             'no_surat.required' => 'Harap Masukan Nomor Surat',
             'tanggal.required' => 'Harap Masukan Tanggal',

@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use DataTables;
 use App\Models\Bsi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class BsiController extends Controller
 {
     // Function View Data Bali Smart Islands
     public function index(){
         // get data from database
-        $bsi = DB::table('bsis')->orderBy('id', 'desc')->get();
+        $bsi = DB::table('bsis')
+            ->orderBy('id', 'desc')
+            ->get();
         // returning view
         return view('layouts.data_bsi.bsi_data', compact('bsi'));
     }
@@ -32,7 +34,10 @@ class BsiController extends Controller
     // function for Insert Data
     public function store(Request $request){
 
-            $valid = $request->validate([
+        $data = $request->all();
+
+        // validation
+        $rules = [
                 'kategori' => 'required|string',
                 'kabupaten' => 'required|string',
                 'kecamatan' => 'required|string',
@@ -46,23 +51,30 @@ class BsiController extends Controller
                 'longitude' => 'nullable|string',
                 'nama_pic' => 'nullable|string',
                 'nomor_tlp' => 'nullable|string',
-            ]);
+            ];
 
-            if($valid){
-                $store = Bsi::create($valid);
-                if($store){
-                    return redirect('/bsi');
-                }else{
-                    return back()->with('error', 'Gagal Menyimpan Data, Silahkan Coba Lagi!');
-                }
-            }else{
-                return back()->with('error', "Terjadi Kesalahan Saat Mencoba Menyimpan Dta, Silahkan Coba Lagi!");
-            }
+        // validate data using validator class
+        $validator = Validator::make($data, $rules);
+
+        // check if validator is success?
+        if ($validator->fails()) {
+            // displaying error message
+            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            // Redirect with error message
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            // Store data to database
+            Bsi::create($data);
+            // displaying success message
+            session()->flash('success', 'Data berhasil disimpan!');
+            // Redirect to doc data page
+            return redirect('/bsi');
         }
+    }
         
     // function for Update Data
     public function update(Request $request, Int $id){
-        $validation = $request->validate([
+        $validation = Validator::make($request->all(), [
             'kategori' => 'required|string',
             'kabupaten' => 'required|string',
             'kecamatan' => 'required|string',
@@ -78,10 +90,9 @@ class BsiController extends Controller
             'nomor_tlp' => 'nullable|string',
         ]);
 
-
-        if(!$validation){
-            return back()->with('error', 'Gagal untuk melakukan update data, silahkan coba lagi!');
-        }
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+            }
 
         $update = Bsi::where('id', $id)->update([
             'kategori' => $request-> kategori,
@@ -105,6 +116,8 @@ class BsiController extends Controller
 
         return redirect('/bsi');
     }
+
+    
     // function for Delete Data
     public function destroy(Int $id){
         $delete = Bsi::where('id', $id)->delete();
