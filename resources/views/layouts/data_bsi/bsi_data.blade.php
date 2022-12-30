@@ -6,13 +6,23 @@
         <!-- Begin Page Content -->
                 <div class="container-fluid">
                     {{-- error message --}}
-                    @if(session()->has('error'))
+                    @if(session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Warning!</strong> {{ session('error') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
                     {{-- /error message --}}    
+
+                    
+                  {{-- Success message --}}
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    {{-- end success meesage --}}    
 
                     <!-- Page Heading -->
                     <div class="heading-group d-flex align-items-center justify-content-between gap-3 mb-2 w-100%">
@@ -37,7 +47,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-responsive table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-striped table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
                                      <thead class="table-dark">
                                         <tr>
                                             <th rowspan="2" class="text-center align-middle">No</th>
@@ -86,7 +96,10 @@
                                                         {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
                                                         <a href="{{ url('/bsi/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
                                                         {{-- <hr class="sidebar-divider"> --}}
-                                                        <a href="{{ url('/bsi/destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></a>
+                                                        <form action="{{ url('/bsi/destroy/'.$item-> id) }}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

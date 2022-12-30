@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Models\Document;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class DocumentController extends Controller
@@ -13,9 +12,7 @@ class DocumentController extends Controller
     // Function View All Data
     public function index(){
         // get data from database
-        $documents = DB::table('documents')
-        ->orderBy('tanggal', 'desc')
-        ->paginate(5);
+        $documents = Document::orderBy('id', 'desc')->get();
 
         return view('layouts.doc_archive.doc_data', compact('documents'));
     }
@@ -74,7 +71,6 @@ class DocumentController extends Controller
     // function view edit page
     public function edit(Int $id){
         $documents = Document::where('id', $id)->get();
-
         return view('layouts.doc_archive.doc_edit', compact('documents'));
     }
 
@@ -131,9 +127,10 @@ class DocumentController extends Controller
         $delete = Document::where('id', $id)->delete();
 
         if($delete){
+            session()->flash('success', 'Data berhasil Dihapus!');
             return redirect('/document');
         }else{
-            return back()->with('error', 'Failed to delete post');
+            return back()->with('error', 'Gagal ');
         }
     }
 }

@@ -21,7 +21,10 @@
                                     <div class="button-group d-flex w-auto gap-2">
                                           @foreach ($find as $item)
                                                 <a href="{{ url('/infrastructure/'.$item-> id.'/edit') }}" class="btn btn-info">Edit Data <i class='bx bxs-edit' ></i></a>
-                                                <a href="{{ url('/infrastructure/'.$item-> id.'/destroy') }}" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete Data <i class='bx bxs-trash'></i></a>
+                                                <form action="{{ url('/infrastructure/'.$item-> id.'/destroy') }}" method="post" class="d-inline">
+                                                      @csrf
+                                                      <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete Data<i class='bx bxs-trash'></i></button>
+                                                  </form>
                                           @endforeach
                                     {{-- <a href="{{ url('/bsi_export') }}" class="btn btn-success p-3"></a> --}}
                                     </div>

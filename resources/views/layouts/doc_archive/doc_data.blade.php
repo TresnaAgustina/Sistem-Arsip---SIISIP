@@ -4,7 +4,6 @@
     <section>
         <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     {{-- error message --}}
                     @if(session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -43,42 +42,50 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered nowrap table-striped" id="dataTable" width="100%" cellspacing="0">
+                                {{-- table documents --}}
+                                <table class="table table-striped table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
                                     <thead class="thead-dark">
-                                        <tr>
+                                       <tr>
                                             <th rowspan="2" class="text-center align-middle">No</th>
                                             <th rowspan="2" class="text-center align-middle">No.Surat</th>
                                             <th rowspan="2" class="text-center align-middle">Tanggal</th>
                                             <th rowspan="2" class="text-center align-middle">Kategori</th>
                                             <th rowspan="2" class="text-center align-middle">Judul</th>
                                             <th rowspan="2" class="text-center align-middle">Uraian</th>
-                                            <th rowspan="2" class="text-center align-middle">Action</th>
-                                        </tr>
+                                            <th rowspan="2" class="text-center align-middle">Detail</th>
+                                            <th colspan="2" class="text-center align-middle">Action</th>
+                                       </tr>
                                     </thead>
                                     <tbody>
-                                        @if ($documents->isEmpty())
-                                            <tr>
-                                                <td colspan="6" class="text-center fs-4">Data Is Empty</td>
-                                            </tr>
-                                        @endif
-                                        @foreach ($documents as $index => $item)
-                                            <tr>
-                                                <td class="text-center align-middle">{{ $index + 1 }}</td>
-                                                <td class="px-3" style="">{{ $item->no_surat }}</td>
-                                                <td class="px-3" style="">{{ $item->tanggal }}</td>
-                                                <td class="px-3" style="">{{ $item->kategori }}</td>
-                                                <td class="px-3" style="">{{ $item->judul }}</td>
-                                                <td class="px-3" style="">{{ $item->uraian }}</td>
-                                                <td class="px-3 text-center align-middle" style="">
-                                                    <a href="{{ $item->link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
-                                                    <a href="{{ url('/document/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
-                                                    {{-- <hr class="sidebar-divider"> --}}
-                                                    <a href="{{ url('/document/destroy/'.$item-> id) }}" class="btn btn-danger btn_delete m-1" onclick="return confirm('Are you sure you want to delete this?')"><i class='bx bxs-trash'></i></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                            @if ($documents->isEmpty())
+                                                <tr>
+                                                    <td colspan="8" class="text-center fs-4">Data Is Empty</td>
+                                                </tr>
+                                            @endif
+                                            @foreach ($documents as $index => $item)
+                                                    <tr>
+                                                        <td class="text-center align-middle">{{ $index + 1 }}</td>
+                                                        <td class="px-3 align-middle" style="">{{ $item->no_surat }}</td>
+                                                        <td class="px-3 align-middle" style="">{{ $item->tanggal }}</td>
+                                                        <td class="px-3 align-middle" style="">{{ $item->kategori }}</td>
+                                                        <td class="px-3 align-middle" style="">{{ $item->judul }}</td>
+                                                        <td class="px-3 align-middle" style="">{{ $item->uraian }}</td>
+                                                        <td class="px-3 align-middle text-center">
+                                                            <a href="{{ $item->link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
+                                                        </td>
+                                                        <td class="px-3 text-center align-middle" style="">
+                                                            <a href="{{ url('/document/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                                            {{-- <hr class="sidebar-divider"> --}}
+                                                            <form action="{{ url('/document/destroy/'.$item-> id) }}" method="POST" class="d-inline">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                            @endforeach
                                     </tbody>
                                 </table>
+                                {{-- end table --}}
                             </div>
                         </div>
                     </div>

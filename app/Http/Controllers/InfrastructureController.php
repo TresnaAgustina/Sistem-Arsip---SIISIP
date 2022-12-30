@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InfraExport;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\Infrastructure;
@@ -50,8 +51,12 @@ class InfrastructureController extends Controller
             'catatan' => 'nullable|string'
         ];
 
+        // ddd($request);
+
         // validate data using validator class
         $validator = Validator::make($data, $rules);
+
+        // ddd($request);
 
         if($request->hasFile('detail')){
             // $request->file('detail')->store('files');  
@@ -87,7 +92,7 @@ class InfrastructureController extends Controller
     // ===== function for Update Data =====
     public function update(Request $request, Int $id){
 
-        $validation = Validator::make($request->all(), [
+        $validation = $request->validate([
             'nama' => 'required|string',
             'kategori' => 'required|string',
             'tahun_pengadaan' => 'required|string',
@@ -95,49 +100,50 @@ class InfrastructureController extends Controller
             'penyedia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'detail' => 'file|max: 2048',
+            'detail' => 'nullable|file|max: 2048',
             'catatan' => 'nullable|string'
         ]);
 
-        if ($validation->fails()) {
-            return redirect()->back()->withErrors($validation)->withInput();
-        }
 
+        // ddd($request);  
 
         // $file = Infrastructure::select('detail')->where('id', $id)->first();
-        if ($request->has('old_file')) {
-            // hapus file lama
-            Storage::delete($request->old_file);
-          }
-            $file = $request->file('detail');
-            $path = $file->store('files');
-
-        // $update = Infrastructure::where('id', $id)->update($validation);
-        $update = Infrastructure::where('id', $id)->update([
-            'nama' => $request-> nama,
-            'kategori' => $request-> kategori,
-            'tahun_pengadaan' => $request-> tahun_pengadaan,
-            'lokasi' => $request-> lokasi,
-            'penyedia' => $request-> penyedia,
-            'latitude' => $request-> latitude,
-            'longitude' => $request-> longitude,
-            'detail' => $request-> detail,
-            'catatan' => $request-> catatan,
-        ]);
-
-        if(!$update){
-            return back()->with('error', 'Gagal untuk melakukan update data, silahkan coba lagi!');
+        if($request->file('detail')){
+            if ($request->oldFile) {
+                // hapus file lama
+                Storage::delete($request->oldFile);
+              }
+              $validation['detail'] = $request->file('detail')->store('files');
         }
+        
+        $update = Infrastructure::where('id', $id)->update($validation);
 
+
+       //   validation if update was successfully
+       if($update){
+        // displaying success message
+        session()->flash('success', 'Data berhasil disimpan!');
         return redirect('/infrastructure');
+        }else{
+            // displaying error message
+            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            // Redirect with error message
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
     }
 
 
     // function for Delete Data
-    public function destroy(Int $id){
+    public function destroy(Infrastructure $infra, Int $id){
+
+        if($infra->detail) {
+            // delete file from storage
+            Storage::delete($infra->detail);
+          }
         $delete = Infrastructure::where('id', $id)->delete();
 
         if($delete){
+            session()->flash('success', 'Data berhasil Dihapus!');
             return redirect('/infrastructure');
         }else{
             return back()->with('error', 'Failed to delete post');

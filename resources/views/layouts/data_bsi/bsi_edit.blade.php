@@ -30,7 +30,7 @@
                   
             <!-- Page Heading -->
             <div class="heading-group d-flex align-items-center justify-content-between gap-3 my-5 w-100%">
-                  <h1 class="h3 m-0 text-gray-800">Pencatatan Data Bali Smart Island</h1>
+                  <h1 class="h3 m-0 text-gray-800">Update Data Bali Smart Island</h1>
                   <a href="{{ url('/bsi') }}" class="btn btn-info"><i class='bx bxs-folder fs-5 align-top' ></i> Lihat Semua Data</a>
               </div>
 

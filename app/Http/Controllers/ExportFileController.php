@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\BsiExport;
 use App\Exports\DocumentExport;
+use App\Exports\InfraExport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 

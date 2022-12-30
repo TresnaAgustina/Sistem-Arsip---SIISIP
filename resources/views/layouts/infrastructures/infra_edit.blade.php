@@ -29,7 +29,7 @@
 
                   <!-- Page Heading -->
                   <div class="heading-group d-flex align-items-center justify-content-between gap-3 my-5 w-100%">
-                        <h1 class="h3 m-0 text-gray-800">Pendataan Infrastruktur</h1>
+                        <h1 class="h3 m-0 text-gray-800">Update Pendataan Infrastruktur</h1>
                         <a href="{{ url('/infrastructure') }}" class="btn btn-info"><i class='bx bxs-folder fs-5 align-top' ></i> Lihat Semua Data</a>
                   </div>
 
@@ -128,9 +128,9 @@
                                     <div class="form-outline col d-flex flex-column gap-2">
                                           <label class="form-label" for="option4">Detail</label>
                                           <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="300" height="300"></iframe>
-                                          <input type="file" id="option4" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ $item-> detail }}" />
+                                          <input type="file" id="option4" class="form-control @error('detail') is-invalid @enderror" name="detail" value="{{ asset('storage/'.$item-> detail) }}" />
                                           {{-- oldFile --}}
-                                          <input type="hidden" id="old_file" name="old_file" value="{{ $item-> detail }}"><br><br>
+                                          <input type="hidden" id="oldFile" name="oldFile" value="{{ $item-> detail }}" ><br><br>
                                           @error('detail')
                                           <div class="fs-6 error text-danger my-1">*{{ $message }}</div>
                                           @enderror

@@ -21,5 +21,9 @@ class Infrastructure extends Model
         'catatan',
     ];
 
+    protected $hidden = [
+        'detail',
+    ];
+
 
 }

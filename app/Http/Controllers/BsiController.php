@@ -92,7 +92,7 @@ class BsiController extends Controller
 
         if ($validation->fails()) {
             return redirect()->back()->withErrors($validation)->withInput();
-            }
+        }
 
         $update = Bsi::where('id', $id)->update([
             'kategori' => $request-> kategori,
@@ -110,11 +110,17 @@ class BsiController extends Controller
             'nomor_tlp' => $request-> nomor_tlp,
         ]);
 
-        if(!$update){
-            return back()->with('error', 'Gagal untuk melakukan update data, silahkan coba lagi!');
+        //   validation if update was successfully
+        if($update){
+            // displaying success message
+            session()->flash('success', 'Data berhasil disimpan!');
+            return redirect('/bsi');
+        }else{
+            // displaying error message
+            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            // Redirect with error message
+            return redirect()->back()->withErrors($validation)->withInput();
         }
-
-        return redirect('/bsi');
     }
 
     
@@ -123,6 +129,7 @@ class BsiController extends Controller
         $delete = Bsi::where('id', $id)->delete();
 
         if($delete){
+            session()->flash('success', 'Data berhasil Dihapus!');
             return redirect('/bsi');
         }else{
             return back()->with('error', 'Failed to delete post');

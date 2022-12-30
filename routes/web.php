@@ -61,7 +61,7 @@ Route::controller(DocumentController::class)->group(function () {
       // Store Data - Edit Data Archive Document
       Route::post('/document/update/{id}', 'update');
       // Delete Data - Edit Data Archive Document
-      Route::get('/document/destroy/{id}', 'destroy');
+      Route::post('/document/destroy/{id}', 'destroy');
 });
 
 
@@ -87,7 +87,7 @@ Route::controller(BsiController::class)->group(function () {
       // Store Data - Edit Data bsi
       Route::post('/bsi/update/{id}', 'update');
       // Delete Data - Edit Data bsi
-      Route::get('/bsi/destroy/{id}', 'destroy');
+      Route::post('/bsi/destroy/{id}', 'destroy');
 });
 
 
@@ -117,7 +117,7 @@ Route::controller(InfrastructureController::class)->group(function () {
       // Store Data - Edit Data infrastructures
       Route::post('/infrastructure/{id}/update', 'update');
       // Delete Data - Edit Data infrastructures
-      Route::get('/infrastructure/{id}/destroy', 'destroy');
+      Route::post('/infrastructure/{id}/destroy', 'destroy');
 });
 
 

@@ -29,7 +29,7 @@
                   
             <!-- Page Heading -->
             <div class="heading-group d-flex align-items-center justify-content-between gap-3 my-3 w-100%">
-                  <h1 class="h3 m-0 text-gray-800">Tambah Data Arsip Dokumen</h1>
+                  <h1 class="h3 m-0 text-gray-800">Update Data Arsip Dokumen</h1>
             </div>
               @foreach ($documents as $item)
                     <form action="{{ url('/document/update/'.$item-> id) }}" method="POST">
