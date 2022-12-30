@@ -40,7 +40,7 @@
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Nomor Surat</label>
-                        <input type="text" id="option1" class="form-control  @error('no_surat') is-invalid @enderror" name="no_surat"/>
+                        <input type="text" id="option1" class="form-control  @error('no_surat') is-invalid @enderror" name="no_surat" value="{{ old('no_surat') }}"/>
                         @error('no_surat')
                           <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
                         @enderror
@@ -49,7 +49,7 @@
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option2">Tanggal Surat</label>
-                        <input type="date" id="option2" class="form-control  @error('tanggal') is-invalid @enderror"  name="tanggal"/>
+                        <input type="date" id="option2" class="form-control  @error('tanggal') is-invalid @enderror"  name="tanggal" value="{{ old('tanggal') }}"/>
                         @error('tanggal')
                           <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
                         @enderror
@@ -79,7 +79,7 @@
                   <!-- input -->
                   <div class="form-outline mb-4">
                       <label class="form-label" for="option4">Judul Surat</label>
-                      <input type="text" id="option4" class="form-control  @error('judul') is-invalid @enderror" name="judul"/>
+                      <input type="text" id="option4" class="form-control  @error('judul') is-invalid @enderror" name="judul" value="{{ old('judul') }}"/>
                       @error('judul')
                           <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
                       @enderror
@@ -88,7 +88,7 @@
                   <!-- input -->
                   <div class="form-outline mb-4">
                         <label class="form-label" for="option5">Link File/Surat</label>
-                        <input type="text" id="option5" class="form-control  @error('link_file') is-invalid @enderror" name="link_file"/>
+                        <input type="text" id="option5" class="form-control  @error('link_file') is-invalid @enderror" name="link_file" value="{{ old('link_file') }}"/>
                         @error('link_file')
                           <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
                         @enderror
@@ -97,7 +97,7 @@
                   <!-- input -->
                   <div class="form-outline mb-4">
                     <label class="form-label" for="option6">Uraian Surat/Informasi Tambahan</label>
-                    <textarea class="form-control  @error('uraian') is-invalid @enderror" id="option6" rows="4" name="uraian"></textarea>
+                    <textarea class="form-control  @error('uraian') is-invalid @enderror" id="option6" rows="4" name="uraian">{{ old('uraian') }}</textarea>
                     @error('uraian')
                           <div class="error fs-6 text-danger my-1">*{{ $message }}</div>
                     @enderror

@@ -9,23 +9,33 @@ use App\Http\Controllers\Controller;
 
 class DocumentController extends Controller
 {
-    // Function View All Data
+    // ===== Function View All Data =====
     public function index(){
         // get data from database
         $documents = Document::orderBy('id', 'desc')->get();
-
+        // return view with data
         return view('layouts.doc_archive.doc_data', compact('documents'));
     }
 
 
-    // function View Add Document
+    // ===== function View Add Document =====
     public function add(){
         return view('layouts.doc_archive.doc_add');
     }
 
-    // function store data document
-    public function store(Request $request){
+    
+    // function view edit page
+    public function edit(Int $id){
+        $documents = Document::where('id', $id)->get();
+        return view('layouts.doc_archive.doc_edit', compact('documents'));
+    }
 
+
+    // ========== Logic ========== //
+
+
+    // ===== function store data document =====
+    public function store(Request $request){
         // get all data from request
         $data = $request->all();
 
@@ -68,36 +78,25 @@ class DocumentController extends Controller
     }
 
 
-    // function view edit page
-    public function edit(Int $id){
-        $documents = Document::where('id', $id)->get();
-        return view('layouts.doc_archive.doc_edit', compact('documents'));
-    }
-
     // function update data
     public function update(Request $request, Int $id){
-        $data = $request->all();
          // Validation
-         $validation = [
+         $validation = Validator::make($request->all(),[
             'no_surat' => 'required|string',
             'tanggal' => 'required|date',
             'kategori' => 'required|string',
             'judul' => 'required|string',
             'link_file' => 'required|string',
             'uraian' => 'required|string',
-          ]; 
+        ]); 
 
-        // Create custom error meesage
-        $messages = [
-            'no_surat.required' => 'Harap Masukan Nomor Surat',
-            'tanggal.required' => 'Harap Masukan Tanggal',
-            'kategori.required' => 'Harap Masukan Kategori',
-            'judul.required' => 'Harap Masukan Judul',
-            'link_file.required' => 'Harap Masukan Link File',
-        ];
+        // if valiadation is fails
+        if ($validation->fails()) {
+            // return with error message
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
 
-          $validator = Validator::make($validation, $messages);
-
+        //   update data
           $update = Document::where('id', $id)->update([
             'no_surat' => $request->no_surat,
             'tanggal' => $request->tanggal,
@@ -116,20 +115,25 @@ class DocumentController extends Controller
             // displaying error message
             session()->flash('error', 'Data gagal disimpan, coba lagi!');
             // Redirect with error message
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()->withErrors($validation)->withInput();
         }
     }
 
-    // function for delete data
+
     // ===== Delete Data ===== //
     public function destroy(Int $id){
 
-        $delete = Document::where('id', $id)->delete();
+        // getting data from database
+        $getDt = Document::where('id', $id)->delete();
 
-        if($delete){
+        // check, does getGt is success?
+        if($getDt){
+            // displaying successs meesage
             session()->flash('success', 'Data berhasil Dihapus!');
+            // return to document data page
             return redirect('/document');
         }else{
+            // if failed. return with error message
             return back()->with('error', 'Gagal ');
         }
     }

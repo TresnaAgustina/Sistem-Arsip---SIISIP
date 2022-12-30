@@ -35,7 +35,7 @@
                         </div>
                     </div>
   
-                    <!-- DataTales Example -->
+                    <!-- card -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Arsip Dokumen</h6>
@@ -91,7 +91,6 @@
                     </div>
   
                 </div>
-                <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
     </section>
