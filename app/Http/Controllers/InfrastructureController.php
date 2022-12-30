@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\InfraExport;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\Infrastructure;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,31 +12,47 @@ class InfrastructureController extends Controller
 {
     // ===== function index =====
     public function index(){
+        // get data from database
         $infra = Infrastructure::orderBy('id', 'desc')->get();
-
+        // return view with data
         return view('layouts.infrastructures.infra_data', compact('infra'));
     }
 
+
     // ===== function view add =====
     public function add(){
+        // return view for add data 
         return view('layouts.infrastructures.infra_add');
     }
 
+
     // ===== function detail data =====
     public function detail(Int $id){
+        // getting data from databae
         $find = Infrastructure::where('id', $id)->get();
-
+        // return view detai with data
         return view('layouts.infrastructures.infra_detail', compact('find'));
     }
 
-    // ===== ===== Logic ===== ===== //
+
+    // ===== function view edit =====
+    public function edit(Int $id){
+        // getting data from database
+         $find = Infrastructure::where('id', $id)->get();
+        // return view edit with data
+        return view('layouts.infrastructures.infra_edit', compact('find'));
+    }
+
+
+    // ===== ===== System Logic ===== ===== //
+
 
     // ===== function add data =====
     public function store(Request $request){
-
         // get all data from request
         $data = $request->all();
 
+        // rules for data validation
         $rules =[
             'nama' => 'required|string',
             'kategori' => 'required|string',
@@ -51,47 +65,39 @@ class InfrastructureController extends Controller
             'catatan' => 'nullable|string'
         ];
 
-        // ddd($request);
-
         // validate data using validator class
         $validator = Validator::make($data, $rules);
 
-        // ddd($request);
-
+        // check does the request have data with file type?
         if($request->hasFile('detail')){
-            // $request->file('detail')->store('files');  
+            // store file to public storage in 'files' folder 
             $data['detail'] = $request->file('detail')->store('files');
         }else{
+            // else do nothing..
             $path = '';
         }
 
         // check if validator is success?
         if ($validator->fails()) {
-            // displaying error message
+            // if unsuccess, displaying error message
             session()->flash('error', 'Data gagal disimpan, coba lagi!');
             // Redirect with error message
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
+            //if success
             // Store data to database
             Infrastructure::create($data);
             // displaying success message
             session()->flash('success', 'Data berhasil disimpan!');
-            // Redirect to doc data page
+            // Redirect to infrastructure data page
             return redirect('/infrastructure');
         }
     }
 
 
-    // ===== function view edit =====
-    public function edit(Int $id){
-        $find = Infrastructure::where('id', $id)->get();
-
-        return view('layouts.infrastructures.infra_edit', compact('find'));
-    }
-
     // ===== function for Update Data =====
     public function update(Request $request, Int $id){
-
+        // validation data
         $validation = $request->validate([
             'nama' => 'required|string',
             'kategori' => 'required|string',
@@ -104,20 +110,19 @@ class InfrastructureController extends Controller
             'catatan' => 'nullable|string'
         ]);
 
-
-        // ddd($request);  
-
-        // $file = Infrastructure::select('detail')->where('id', $id)->first();
+        // check, does the request have data with file type?
         if($request->file('detail')){
+            // check, does the request have an oldFile data?
             if ($request->oldFile) {
-                // hapus file lama
+                // delete old file from storage
                 Storage::delete($request->oldFile);
               }
+            //   store new file to public storage
               $validation['detail'] = $request->file('detail')->store('files');
         }
         
+        // update data
         $update = Infrastructure::where('id', $id)->update($validation);
-
 
        //   validation if update was successfully
        if($update){
@@ -133,23 +138,28 @@ class InfrastructureController extends Controller
     }
 
 
-    // function for Delete Data
+    // ===== function for Delete Data =====
     public function destroy(Infrastructure $infra, Int $id){
 
+        // check, does the infrastructure have data with file type?
         if($infra->detail) {
-            // delete file from storage
+            // delete file from public storage
             Storage::delete($infra->detail);
           }
+        //   delete data
         $delete = Infrastructure::where('id', $id)->delete();
 
+        // delete success?
         if($delete){
+            // display an succes message
             session()->flash('success', 'Data berhasil Dihapus!');
+            // redirect to infra data page
             return redirect('/infrastructure');
         }else{
+            // if unsuccess, display an error meesage
             return back()->with('error', 'Failed to delete post');
         }
     }
-    
 }
 
 
