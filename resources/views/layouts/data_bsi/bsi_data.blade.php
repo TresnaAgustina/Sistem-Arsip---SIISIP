@@ -7,13 +7,12 @@
                 <div class="container-fluid">
                     {{-- error message --}}
                     @if(session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Warning!</strong> {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Warning!</strong> {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                     @endif
                     {{-- /error message --}}    
-
                     
                   {{-- Success message --}}
                     @if(session('success'))
@@ -93,11 +92,11 @@
                                                     <td class="px-3 align-middle">{{ $item-> nama_pic }}</td>
                                                     <td class="px-3 align-middle">{{ $item-> nomor_tlp }}</td>
                                                     <td class="px-3 text-center align-middle">
-                                                        {{-- <a href="#" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a> --}}
+                                                        {{-- button edit --}}
                                                         <a href="{{ url('/bsi/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
-                                                        {{-- <hr class="sidebar-divider"> --}}
+                                                        {{-- button delete --}}
                                                         <form action="{{ url('/bsi/destroy/'.$item-> id) }}" method="POST" class="d-inline">
-                                                            @csrf
+                                                        @csrf
                                                             <button type="submit" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></button>
                                                         </form>
                                                     </td>
@@ -108,15 +107,8 @@
                             </div>
                         </div>
                     </div>
-                        {{-- pagination link --}}
-                        {{-- <nav aria-label="Page navigation">
-                            <ul class="pagination  pagination-sm">
-                                {{ $bsi->onEachSide(5)->links() }}
-                            </ul>
-                        </nav> --}}
                 </div>
                 <!-- /.container-fluid -->
-  
             </div>
             <!-- End of Main Content -->
     </section>
@@ -131,11 +123,3 @@
     </footer>
     <!-- End of Footer -->
 @endsection
-
-<script>
-    function exportExcel(){
-        var table = $('#dataTable').DataTable();
- 
-        var data = table.buttons.exportData();
-    }
-</script>

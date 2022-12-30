@@ -35,12 +35,13 @@
 
             <form action="{{ url('/bsi/add') }}" method="POST">
                   @csrf
-                  <!-- 2 column grid layout with text inputs for the first and last names -->
+                  <!-- row -->
                   <div class="row mb-4">
+                    {{-- col --}}
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Kabupaten</label>
-                        <input type="text" id="option1" class="form-control" datalist="list01" name="kabupaten" />
+                        <input type="text" id="option1" class="form-control" datalist="list01" name="kabupaten" value="{{ old('kabupaten') }}"/>
                         <datalist id="list01">
                           <option value="Gianyar">
                         </datalist>
@@ -49,45 +50,48 @@
                         @enderror
                       </div>
                     </div>
+                    {{-- col --}}
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option2">Kecamatan</label>
-                        <input type="text" id="option2" class="form-control"  name="kecamatan"/>
+                        <input type="text" id="option2" class="form-control"  name="kecamatan" value="{{ old('kecamatan') }}"/>
                         @error('kecamatan')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
                     </div>
+                    {{-- col --}}
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Desa</label>
-                        <input type="text" id="option1" class="form-control" name="desa" />
+                        <input type="text" id="option1" class="form-control" name="desa" value="{{ old('desa') }}"/>
                         @error('desa')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
                     </div>
+                    {{-- col --}}
                     <div class="col">
                       <div class="form-outline">
                         <label class="form-label" for="option1">Desa Pekraman</label>
-                        <input type="text" id="option1" class="form-control" name="desa_pekraman" />
+                        <input type="text" id="option1" class="form-control" name="desa_pekraman" value="{{ old('desa_pekraman') }}"/>
                         @error('desa_pekraman')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
                     </div>
                   </div>
-
+                  {{-- row --}}
                   <div class="row mb-4">
-                    <!-- input -->
+                    <!-- col -->
                     <div class="form-outline col">
                       <label class="form-label" for="option4">Data Lokasi</label>
-                      <input type="text" id="option4" class="form-control" name="data_lokasi" />
+                      <input type="text" id="option4" class="form-control" name="data_lokasi" value="{{ old('data_lokasi') }}"/>
                       @error('data_lokasi')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                       @enderror
                     </div>
-
+                    {{-- col --}}
                     <div class="col">
                       <div class="form-outline d-flex flex-column">
                         <label class="form-label" for="kategori">Kategori Lokasi</label>
@@ -107,13 +111,12 @@
                       </div>
                     </div>
                   </div>
-
-                  
+                  {{-- row --}}
                   <div class="row mb-4">
-                      <!-- input -->
+                      <!-- col -->
                       <div class="form-outline col">
                           <label for="DataList01" class="form-label">Media</label>
-                          <input class="form-control" name="media" list="dataListOption01" id="DataList01">
+                          <input class="form-control" name="media" list="dataListOption01" id="DataList01" value="{{ old('media') }}">
                           <datalist id="dataListOption01">
                               <option value="Fiber Optik">
                               <option value="Wireless">
@@ -122,10 +125,10 @@
                             <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                           @enderror
                       </div>
-                      <!-- input -->
+                      <!-- col -->
                       <div class="form-outline col">
                         <label for="DataList02" class="form-label">Layanan</label>
-                          <input class="form-control" name="layanan" list="dataListOption02" id="DataList02">
+                          <input class="form-control" name="layanan" list="dataListOption02" id="DataList02" value="{{ old('layanan') }}">
                           <datalist id="dataListOption02">
                             <option value="Wifi Station">
                             <option value="Orbit">
@@ -135,47 +138,47 @@
                           @enderror
                       </div>
                   </div>
-
+                  {{-- row --}}
                   <div class="row mb-4">
-                      <!-- input -->
+                      <!-- col -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Lokasi Terpasang</label>
-                        <input type="text" id="option4" class="form-control" name="lokasi" />
+                        <input type="text" id="option4" class="form-control" name="lokasi" value="{{ old('lokasi') }}"/>
                         @error('lokasi')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
-                      <!-- input -->
+                      <!-- col -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Latitude</label>
-                        <input type="text" id="option4" class="form-control" name="latitude" />
+                        <input type="text" id="option4" class="form-control" name="latitude" value="{{ old('latitude') }}"/>
                         @error('latitude')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
-                       <!-- input -->
+                       <!-- col -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Longitude</label>
-                        <input type="text" id="option4" class="form-control" name="longitude" />
+                        <input type="text" id="option4" class="form-control" name="longitude" value="{{ old('longitude') }}"/>
                         @error('longitude')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
                   </div>  
-
+                  {{-- row --}}
                   <div class="row mb-4">
-                      <!-- input -->
+                      <!-- col -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Nama PIC</label>
-                        <input type="text" id="option4" class="form-control" name="nama_pic" />
+                        <input type="text" id="option4" class="form-control" name="nama_pic" value="{{ old('nama_pic') }}"/>
                         @error('nama_pic')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror
                       </div>
-                      <!-- input -->
+                      <!-- col -->
                       <div class="form-outline col">
                         <label class="form-label" for="option4">Nomor Telepon</label>
-                        <input type="text" id="option4" class="form-control" name="nomor_tlp" />
+                        <input type="text" id="option4" class="form-control" name="nomor_tlp" value="{{ old('nomor_tlp') }}"/>
                         @error('nomor_tlp')
                           <div class="error fs-6 text-danger my-1 w-auto">*{{ $message }}</div>
                         @enderror

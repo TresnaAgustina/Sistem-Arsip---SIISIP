@@ -9,7 +9,7 @@ class Bsi extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+protected $fillable = [
         'kategori',
         'kabupaten',
         'kecamatan',
@@ -24,11 +24,4 @@ class Bsi extends Model
         'nama_pic',
         'nomor_tlp',
     ];
-
-
-    protected $dates = ['deleted_at'];
-
-    // protected $hidden = [
-    //     'link_file',
-    // ];
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class BsiController extends Controller
 {
-    // Function View Data Bali Smart Islands
+    // ===== Function View Data Bali Smart Islands =====
     public function index(){
         // get data from database
         $bsi = DB::table('bsis')
@@ -19,21 +19,27 @@ class BsiController extends Controller
         // returning view
         return view('layouts.data_bsi.bsi_data', compact('bsi'));
     }
+    
 
-    // function view insert data bsi
+    // ===== function view insert data bsi =====
     public function add(){
         return view('layouts.data_bsi.bsi_add');
     }
 
-    // function view edit page
+
+    // ===== function view edit page =====
     public function edit(Int $id){
         $find = Bsi::where('id', $id)->get();
         return view('layouts.data_bsi.bsi_edit', compact('find'));
     }
 
-    // function for Insert Data
-    public function store(Request $request){
 
+    // ========== Logic ==========
+
+
+    // ===== function for Insert Data =====
+    public function store(Request $request){
+        // get all data from request
         $data = $request->all();
 
         // validation
@@ -72,7 +78,8 @@ class BsiController extends Controller
         }
     }
         
-    // function for Update Data
+    
+    // ===== function for Update Data =====
     public function update(Request $request, Int $id){
         $validation = Validator::make($request->all(), [
             'kategori' => 'required|string',
@@ -90,10 +97,13 @@ class BsiController extends Controller
             'nomor_tlp' => 'nullable|string',
         ]);
 
+        // if valiadation is fails
         if ($validation->fails()) {
+            // return with error message
             return redirect()->back()->withErrors($validation)->withInput();
         }
 
+        // update data
         $update = Bsi::where('id', $id)->update([
             'kategori' => $request-> kategori,
             'kabupaten' => $request-> kabupaten,
@@ -124,7 +134,7 @@ class BsiController extends Controller
     }
 
     
-    // function for Delete Data
+    // ===== function for Delete Data =====
     public function destroy(Int $id){
         $delete = Bsi::where('id', $id)->delete();
 

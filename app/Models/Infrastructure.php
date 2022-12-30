@@ -24,6 +24,4 @@ class Infrastructure extends Model
     protected $hidden = [
         'detail',
     ];
-
-
 }
