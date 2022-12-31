@@ -13,7 +13,7 @@ class InfrastructureController extends Controller
     // ===== function index =====
     public function index(){
         // get data from database
-        $infra = Infrastructure::orderBy('id', 'desc')->get();
+        $infra = Infrastructure::orderBy('updated_at', 'desc')->get();
         // return view with data
         return view('layouts.infrastructures.infra_data', compact('infra'));
     }
@@ -130,11 +130,11 @@ class InfrastructureController extends Controller
        //   validation if update was successfully
        if($update){
         // displaying success message
-        session()->flash('success', 'Data berhasil disimpan!');
+        session()->flash('success', 'Data berhasil di update!');
         return redirect('/infrastructure');
         }else{
             // displaying error message
-            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            session()->flash('error', 'Data gagal di update, coba lagi!');
             // Redirect with error message
             return redirect()->back()->withErrors($validation)->withInput();
         }
@@ -148,7 +148,7 @@ class InfrastructureController extends Controller
         $file = public_path('storage/'.$getDt->detail);
         // check, does the infrastructure have data with file type?
         if (file_exists($file)){
-            // delete file
+            // unlink file
             @unlink($file);
         }
         // delete data infra

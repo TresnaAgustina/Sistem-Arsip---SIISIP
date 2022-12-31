@@ -123,11 +123,11 @@ class BsiController extends Controller
         //   validation if update was successfully
         if($update){
             // displaying success message
-            session()->flash('success', 'Data berhasil disimpan!');
+            session()->flash('success', 'Data berhasil di update!');
             return redirect('/bsi');
         }else{
             // displaying error message
-            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            session()->flash('error', 'Data gagal di update, coba lagi!');
             // Redirect with error message
             return redirect()->back()->withErrors($validation)->withInput();
         }

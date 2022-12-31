@@ -12,7 +12,7 @@ class DocumentController extends Controller
     // ===== Function View All Data =====
     public function index(){
         // get data from database
-        $documents = Document::orderBy('id', 'desc')->get();
+        $documents = Document::orderBy('updated_at', 'desc')->get();
         // return view with data
         return view('layouts.doc_archive.doc_data', compact('documents'));
     }
@@ -109,11 +109,11 @@ class DocumentController extends Controller
         //   validation if update was successfully
         if($update){
             // displaying success message
-            session()->flash('success', 'Data berhasil disimpan!');
+            session()->flash('success', 'Data berhasil di update!');
             return redirect('/document');
         }else{
             // displaying error message
-            session()->flash('error', 'Data gagal disimpan, coba lagi!');
+            session()->flash('error', 'Data gagal di update, coba lagi!');
             // Redirect with error message
             return redirect()->back()->withErrors($validation)->withInput();
         }
