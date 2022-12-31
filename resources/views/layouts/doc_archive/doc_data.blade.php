@@ -55,6 +55,10 @@
                                             <th rowspan="2" class="text-center align-middle">Detail</th>
                                             <th colspan="2" class="text-center align-middle">Action</th>
                                        </tr>
+                                       <tr>
+                                            <th class="text-center">edit</th>
+                                            <th class="text-center">delete</th>
+                                       </tr>
                                     </thead>
                                     <tbody>
                                             @if ($documents->isEmpty())
@@ -73,9 +77,10 @@
                                                         <td class="px-3 align-middle text-center">
                                                             <a href="{{ $item->link_file }}" class="btn btn-info btn_detail m-1" target="blank"><i class='bx bxs-info-circle'></i></a>
                                                         </td>
-                                                        <td class="px-3 text-center align-middle" style="">
+                                                        <td class="px-3 align-middle text-center">
                                                             <a href="{{ url('/document/edit/'.$item-> id) }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
-                                                            {{-- <hr class="sidebar-divider"> --}}
+                                                        </td>
+                                                        <td class="px-3 text-center align-middle">
                                                             <form action="{{ url('/document/destroy/'.$item-> id) }}" method="POST" class="d-inline">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-danger btn_delete m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class='bx bxs-trash'></i></button>

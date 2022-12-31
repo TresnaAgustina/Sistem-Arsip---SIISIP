@@ -15,7 +15,7 @@
       {{-- Box icons --}}
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       {{-- datatables css --}}
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
       <title>{{ config('app.name', 'Sistem Arsip') }}</title>
       <style>

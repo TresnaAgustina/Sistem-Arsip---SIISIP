@@ -53,11 +53,13 @@
                                 <th colspan="2" class="text-center text-center">kordinat</th>
                                 <th rowspan="2" class="text-center align-middle">Catatan</th>
                                 <th rowspan="2" class="text-center align-middle">Detail</th>
-                                <th rowspan="2" class="text-center align-middle">Action</th>
+                                <th colspan="2" class="text-center align-middle">Action</th>
                             </tr>
                             <tr>
                                 <th class="text-center">Latitude</th>
                                 <th class="text-center">Longitude</th>
+                                <th class="text-center">edit</th>
+                                <th class="text-center">delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,9 +83,11 @@
                                             {{-- button detail --}}
                                             <a href="{{ url('/infrastructure/'.$item-> id.'/detail') }}" class="btn btn-info btn_detail m-1" ><i class='bx bxs-info-circle'></i></a>
                                         </td>
-                                        <td class="px-3 text-center align-middle">
+                                        <td>
                                             {{-- button edit --}}
                                             <a href="{{ url('/infrastructure/'.$item-> id.'/edit') }}" class="btn btn-success btn_edit m-1"><i class='bx bxs-edit' ></i></a>
+                                        </td>
+                                        <td class="px-3 text-center align-middle">
                                             {{-- button delete --}}
                                             <form action="{{ url('/infrastructure/'.$item-> id.'/destroy') }}" method="post" class="d-inline">
                                                 @csrf

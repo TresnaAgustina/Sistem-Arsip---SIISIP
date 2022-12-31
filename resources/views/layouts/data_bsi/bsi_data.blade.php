@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
-                                     <thead class="table-dark">
+                                     <thead class="thead-dark">
                                         <tr>
                                             <th rowspan="2" class="text-center align-middle">No</th>
                                             <th rowspan="2" class="text-center align-middle">Kategori</th>
@@ -77,7 +77,7 @@
                                             @endif
                                             @foreach ($bsi as $index => $item)
                                                 <tr>
-                                                    <td class="px-3 align-middle">{{ $index + 1 }}</td>
+                                                    <td class="px-3 text-center align-middle">{{ $index + 1 }}</td>
                                                     <td class="px-3 align-middle">{{ $item-> kategori }}</td>
                                                     <td class="px-3 align-middle">{{ $item-> kabupaten }}</td>
                                                     <td class="px-3 align-middle">{{ $item-> kecamatan }}</td>

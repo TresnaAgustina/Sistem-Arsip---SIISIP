@@ -134,3 +134,9 @@ Route::controller(ExportFileController::class)->group(function () {
       // export excel for Infrastructure Data
       Route::get('/infra/exportExcel', 'InfraExportExcel');
 });
+
+
+// route for displaying 404 error page
+Route::fallback( function () {
+      return view('auth.404');
+});
