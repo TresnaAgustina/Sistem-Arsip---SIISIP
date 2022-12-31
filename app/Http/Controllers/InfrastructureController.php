@@ -61,21 +61,12 @@ class InfrastructureController extends Controller
             'penyedia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'detail' => 'file|max: 2048',
+            'detail' => 'nullable|max: 2048',
             'catatan' => 'nullable|string'
         ];
 
         // validate data using validator class
         $validator = Validator::make($data, $rules);
-
-        // check does the request have data with file type?
-        if($request->hasFile('detail')){
-            // store file to public storage in 'files' folder 
-            $data['detail'] = $request->file('detail')->store('files');
-        }else{
-            // else do nothing..
-            $path = '';
-        }
 
         // check if validator is success?
         if ($validator->fails()) {
@@ -85,6 +76,14 @@ class InfrastructureController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
             //if success
+            // check does the request have data with file type?
+            if($request->hasFile('detail')){
+                // store file to public storage in 'files' folder 
+                $data['detail'] = $request->file('detail')->store('files');
+            }else{
+                // else do nothing..
+                $path = '';
+            }
             // Store data to database
             Infrastructure::create($data);
             // displaying success message
@@ -106,9 +105,13 @@ class InfrastructureController extends Controller
             'penyedia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'detail' => 'nullable|file|max: 2048',
+            'detail' => 'nullable|max: 2048',
             'catatan' => 'nullable|string'
         ]);
+
+        if(!$validation){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
 
         // check, does the request have data with file type?
         if($request->file('detail')){
@@ -139,15 +142,17 @@ class InfrastructureController extends Controller
 
 
     // ===== function for Delete Data =====
-    public function destroy(Infrastructure $infra, Int $id){
+    public function destroy( Int $id){
+        $getDt = Infrastructure::findorfail($id); 
 
+        $file = public_path('storage/'.$getDt->detail);
         // check, does the infrastructure have data with file type?
-        if($infra->detail) {
-            // delete file from public storage
-            Storage::delete($infra->detail);
-          }
-        //   delete data
-        $delete = Infrastructure::where('id', $id)->delete();
+        if (file_exists($file)){
+            // delete file
+            @unlink($file);
+        }
+        // delete data infra
+        $delete = $getDt->delete();
 
         // delete success?
         if($delete){
