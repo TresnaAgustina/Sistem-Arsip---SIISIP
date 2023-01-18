@@ -12,7 +12,7 @@ class DocumentController extends Controller
     // ===== Function View All Data =====
     public function index(){
         // get data from database
-        $documents = Document::orderBy('updated_at', 'desc')->get();
+        $documents = Document::orderBy('tanggal', 'desc')->get();
         // return view with data
         return view('layouts.doc_archive.doc_data', compact('documents'));
     }
@@ -87,7 +87,7 @@ class DocumentController extends Controller
             'kategori' => 'required|string',
             'judul' => 'required|string',
             'link_file' => 'required|string',
-            'uraian' => 'required|string',
+            'uraian' => 'nullable|string',
         ]); 
 
         // if valiadation is fails

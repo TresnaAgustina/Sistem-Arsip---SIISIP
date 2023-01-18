@@ -14,7 +14,7 @@ class BsiController extends Controller
     public function index(){
         // get data from database
         $bsi = DB::table('bsis')
-            ->orderBy('id', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
         // returning view
         return view('layouts.data_bsi.bsi_data', compact('bsi'));
