@@ -4,6 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="icon" href="https://aptika.kominfo.go.id/wp-content/uploads/2018/10/cropped-cropped-logo-kominfo.png">
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
       {{-- bootstrap css --}}
