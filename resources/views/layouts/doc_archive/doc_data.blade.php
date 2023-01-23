@@ -63,7 +63,7 @@
                                     <tbody>
                                             @if ($documents->isEmpty())
                                                 <tr>
-                                                    <td colspan="8" class="text-center fs-4">Data Is Empty</td>
+                                                    <td colspan="9" class="text-center fs-4">Data Is Empty</td>
                                                 </tr>
                                             @endif
                                             @foreach ($documents as $index => $item)
