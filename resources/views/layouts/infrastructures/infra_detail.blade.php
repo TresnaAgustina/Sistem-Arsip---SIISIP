@@ -34,7 +34,7 @@
                               <div class="card shadow mb-4">
                                     @foreach ($find as $item)
                                     <div class="card-header py-3">
-                                          <h6 class="m-0 font-weight-bold text-primary">Detail Data Infrastruktur <==> ID: {{ $item-> id }}</h6>
+                                          <h6 class="m-0 font-weight-bold text-primary">Detail Data Infrastruktur</h6>
                                     </div>
                                     <div class="card-body">
                                           <iframe src="{{ asset('storage/'.$item-> detail) }}" frameborder="0" width="100%" height="1000"></iframe>
